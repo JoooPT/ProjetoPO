@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Literal {
+public abstract class Literal extends Content{
     
 }

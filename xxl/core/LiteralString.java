@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class LiteralString {
+public class LiteralString extends Literal{
     
 }

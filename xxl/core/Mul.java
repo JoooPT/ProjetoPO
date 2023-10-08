@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Mul {
+public class Mul extends BinaryFunction {
     
 }

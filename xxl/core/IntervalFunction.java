@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class IntervalFunction {
+public abstract class IntervalFunction extends Function {
     
 }

@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Reference {
+public class Reference extends Content {
     
 }

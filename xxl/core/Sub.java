@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Sub {
+public class Sub extends BinaryFunction{
     
 }

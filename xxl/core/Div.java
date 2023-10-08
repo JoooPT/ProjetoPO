@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Div {
+public class Div extends BinaryFunction {
     
 }

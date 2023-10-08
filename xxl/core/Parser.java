@@ -38,7 +38,7 @@ class Parser {
     int rows = -1;
     int columns = -1;
     
-    for (i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++) {
       String[] dimension = reader.readLine().split("=");
       if (dimension[0].equals("linhas"))
         rows = Integer.parseInt(dimension[1]);

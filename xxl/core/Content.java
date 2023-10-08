@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Content {
+public abstract class Content {
     
 }

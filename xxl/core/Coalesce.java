@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Coalesce {
+public class Coalesce extends IntervalFunction{
     
 }

@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class LiteralInteger {
+public class LiteralInteger extends Literal {
     
 }

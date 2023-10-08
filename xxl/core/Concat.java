@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Concat {
+public class Concat extends IntervalFunction {
     
 }

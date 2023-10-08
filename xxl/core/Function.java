@@ -1,5 +1,5 @@
 package xxl.core;
 
-public class Function {
+public abstract class Function extends Content {
     
 }
