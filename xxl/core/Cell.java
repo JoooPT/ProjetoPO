@@ -18,8 +18,9 @@ public class Cell {
      * 
      * @returns the coordinates of the cell as a String
      */
+    @Override
     public String toString() {
-        return "" + _row + ";" + _column;
+        return "" + _row + ";" + _column + "|" + _content.toString();
     }
 
     /**
