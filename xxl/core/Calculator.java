@@ -8,6 +8,9 @@ import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 // FIXME import classes
 
 /**
@@ -16,6 +19,8 @@ import xxl.core.exception.UnrecognizedEntryException;
 public class Calculator {
   /** The current spreadsheet. */
   private Spreadsheet _spreadsheet;
+  private Set<User> _users;
+  private User _userActive;
   
   // FIXME add more fields and methods if needed
   
@@ -77,5 +82,24 @@ public class Calculator {
     } catch (IOException | UnrecognizedEntryException /* FIXME maybe other exceptions */ e) {
       throw new ImportFileException(filename, e);
     }
-  } 
+  }
+  
+  /**
+   * 
+   * @param rows row size of the New spreadsheet
+   * @param columns column size of the New spreadsheet
+   */
+  public void createNewSpreadSheet(int rows, int columns){
+
+  }
+
+  /**
+   * 
+   * @param name of the new user  
+   * @return true if a new user was sucessfuly created, false otherwise
+   */
+  public boolean createUser(String name){
+    return true;
+  }
+  
 }
