@@ -24,6 +24,11 @@ public class Calculator {
   
   // FIXME add more fields and methods if needed
   
+
+  public Calculator(){
+    _users = new HashSet<User>();
+  }
+
   /**
    * Return the current spreadsheet.
    *
@@ -90,7 +95,7 @@ public class Calculator {
    * @param columns column size of the New spreadsheet
    */
   public void createNewSpreadSheet(int rows, int columns){
-
+    _spreadsheet = new Spreadsheet(rows, columns);
   }
 
   /**
@@ -99,7 +104,7 @@ public class Calculator {
    * @return true if a new user was sucessfuly created, false otherwise
    */
   public boolean createUser(String name){
-    return true;
+    return _users.add(new User(name));
   }
   
 }
