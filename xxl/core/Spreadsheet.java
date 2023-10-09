@@ -47,8 +47,10 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer.getCells();
   }
 
-  public Map<String, Cell> getCells() {
-    return _cells;
+  Cell getCell(int row, int column) {
+    String key = "" + row + "|" + column;
+    if (_cells.containsKey(key)) return _cells.get(key);
+    else return new Cell(row, column);
   }
 
   public Range createRange(String range) /*throws ? */ {

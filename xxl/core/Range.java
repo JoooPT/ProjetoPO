@@ -22,20 +22,15 @@ public class Range {
     }
 
     List<Cell> getCells() {
-        String key;
-        Map<String, Cell> map = _spreadsheet.getCells();
         List<Cell> list = new ArrayList<Cell>();
         if (_beginRow == _endRow) {
             for (int col = _beginColumn; col < _endColumn; col++) {
-                key = "" + _beginRow + "|" + col;
-                if (map.containsKey(key)) {
-                    list.add(map.get(key));
-                }
-                else {
-                    Cell cell = new Cell(_beginRow, col);
-                }
+                list.add(_spreadsheet.getCell(_beginRow, col));
             }
         }
+        else for (int row = _beginRow; row < _endRow; row++) {
+                list.add(_spreadsheet.getCell(row, _beginColumn));
+            }
 
         return list;
     }
