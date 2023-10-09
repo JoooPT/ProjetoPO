@@ -47,7 +47,11 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer.getCells();
   }
 
-  public Range createRange(String range) throws ? {
+  public Map<String, Cell> getCells() {
+    return _cells;
+  }
+
+  public Range createRange(String range) /*throws ? */ {
     String[] rangeCoordinates;
     int firstRow, firstColumn, lastRow, lastColumn;
     
