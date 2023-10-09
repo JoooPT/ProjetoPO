@@ -79,6 +79,18 @@ public class Spreadsheet implements Serializable {
     _cutBuffer.setCells(rangeObj.getCells());
   }
 
+  public void clear(String range) {
+    Range rangeObj = createRange(range);
+    List<Cell> list = rangeObj.getCells();
+    for (Cell c: list) {
+      c.setContent(NulContent.getNulContent());
+    }
+  }
+
+  public void addUser(User user) {
+    _users.add(user);
+  }
+
   /**
    * Insert specified content in specified address.
    *
@@ -88,6 +100,8 @@ public class Spreadsheet implements Serializable {
    *        in the specified cell.
    */
   public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
-    //FIXME implement method
+    Cell cell = getCell(row, column);
+    Parser parser = new Parser();
+    cell.setContent(parser.parseContent(contentSpecification));
   }
 }

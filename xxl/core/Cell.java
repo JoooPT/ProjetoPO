@@ -28,7 +28,7 @@ public class Cell {
      * @param content that is inserted in the cell
      */
     void setContent(Content content) {
-
+        _content = content;
     }
 
     /**
@@ -36,6 +36,6 @@ public class Cell {
      * @returns the content of the cell as a literal
      */
     Literal value() {
-
+        return _content.value();
     }
 }
