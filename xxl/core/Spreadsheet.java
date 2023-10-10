@@ -25,7 +25,7 @@ public class Spreadsheet implements Serializable {
   private int _rows;
   private int _columns;
   private boolean _changed;
-  private Map<String, Cell> _cells;
+  private CellStructure _cells;
   private CutBuffer _cutBuffer;
   private Set<User> _users;
   private String _filename;
@@ -33,8 +33,8 @@ public class Spreadsheet implements Serializable {
   public Spreadsheet(int rows, int columns) {
     _rows = rows;
     _columns = columns;
-    _changed = false;
-    _cells = new HashMap<String, Cell>();
+    _changed = true;
+    _cells = new MapCells();
     _users = new HashSet<User>();
   }
 
@@ -56,6 +56,10 @@ public class Spreadsheet implements Serializable {
     return _changed;
   }
 
+  public Cell getCell(int row, int column){
+    return _cells.getCell(row, column);
+  }
+
 
   /**
    * 
@@ -63,12 +67,6 @@ public class Spreadsheet implements Serializable {
    */
   public List<Cell> getCutBuffer() {
     return _cutBuffer.getCells();
-  }
-
-  Cell getCell(int row, int column) {
-    String key = "" + row + "|" + column;
-    if (_cells.containsKey(key)) return _cells.get(key);
-    else return new Cell(row, column);
   }
 
   public Range createRange(String range) /*throws ? */ {

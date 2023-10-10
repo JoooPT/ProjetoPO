@@ -14,6 +14,14 @@ public class Cell {
         _column = column;
     }
 
+    public int getRow(){
+        return _row;
+    }
+
+    public int getCol(){
+        return _column;
+    }
+
     /**
      * 
      * @returns the coordinates of the cell as a String
