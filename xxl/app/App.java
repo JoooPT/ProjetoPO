@@ -17,7 +17,7 @@ public class App {
       if (datafile != null) {
         try {
           receiver.importFile(datafile);
-        } catch (ImportFileException e) {
+        } catch (IOException |ImportFileException e) {
           // no behavior described: just present the problem
           e.printStackTrace();
         }

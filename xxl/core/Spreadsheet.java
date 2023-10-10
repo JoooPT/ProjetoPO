@@ -28,6 +28,7 @@ public class Spreadsheet implements Serializable {
   private Map<String, Cell> _cells;
   private CutBuffer _cutBuffer;
   private Set<User> _users;
+  private String _filename;
   
   public Spreadsheet(int rows, int columns) {
     _rows = rows;
@@ -38,7 +39,24 @@ public class Spreadsheet implements Serializable {
   }
 
   // FIXME define methods
+
+  public void setFileName(String filename){
+    _filename = filename;
+  }
+
+  public String getFilename(){
+    return _filename;
+  }
+
+  public void setChangedStatus(Boolean status){
+    _changed = status;
+  }
   
+  public boolean getChangedStatus(){
+    return _changed;
+  }
+
+
   /**
    * 
    * @returns the cells in the cut buffer as a list
@@ -85,6 +103,7 @@ public class Spreadsheet implements Serializable {
     for (Cell c: list) {
       c.setContent(NulContent.getNulContent());
     }
+    setChangedStatus(true);
   }
 
   public void addUser(User user) {
@@ -102,5 +121,6 @@ public class Spreadsheet implements Serializable {
   public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
     Cell cell = getCell(row, column);
     cell.setContent(content);
+    setChangedStatus(true);
   }
 }

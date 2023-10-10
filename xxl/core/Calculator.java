@@ -82,10 +82,7 @@ public class Calculator {
    */
   public void importFile(String filename) throws ImportFileException, IOException {
     try {
-      // FIXME open import file and feed entries to new spreadsheet (in a cycle)
-      //       each entry is inserted using insertContent of Spreadsheet. Set new
-      // spreadsheet as the active one.
-      // ....
+      _spreadsheet = new Parser().parseFile(filename);
     } catch (IOException | UnrecognizedEntryException /* FIXME maybe other exceptions */ e) {
       throw new ImportFileException(filename, e);
     }
