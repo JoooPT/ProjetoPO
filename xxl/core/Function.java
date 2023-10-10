@@ -15,6 +15,14 @@ public abstract class Function extends Content {
         return _name;
     }
 
+    public String asString(){
+        return value().asString();
+    }
+
+    public int asInt(){
+        return value().asInt();
+    }
+
     protected abstract Literal compute();
 
     public Literal value(){

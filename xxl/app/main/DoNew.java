@@ -18,6 +18,6 @@ class DoNew extends Command<Calculator> {
   
   @Override
   protected final void execute() throws CommandException {
-    _receiver.createNewSpreadSheet(integerField(Message.lines()), integerField(Message.columns()));
+    _receiver.createNewSpreadSheet(integerField("rows"), integerField("columns"));
   }
 }
