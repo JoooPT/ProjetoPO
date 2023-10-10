@@ -12,7 +12,10 @@ public abstract class BinaryFunction extends Function {
 
     @Override
     public String toString(){
-        return "" + super.value() + "=" + super.getName() + "(" + _arg1.toString() + "," + _arg2.toString() + ")";
+        String value = "" + super.value() + "=" + super.getName();
+        String args =  "(" + _arg1.toString() + "," + _arg2.toString() + ")";
+        args = args.replace("=","");
+        return value + args;
     }
 
     public Content getArg1(){

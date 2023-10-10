@@ -19,17 +19,9 @@ public class Reference extends Content {
     }
 
     
-    public String toStringNotArgument(){
-        return "=" + this.toString();
-    }
-
-    /**
-     * Diferent annotation for the reference
-     * @return the reference as a String without the "=" 
-     */
     @Override
     public String toString(){
-        return "" + _row + ";" + _column;   
+        return "=" + _row + ";" + _column;   
     }
 
     /**
