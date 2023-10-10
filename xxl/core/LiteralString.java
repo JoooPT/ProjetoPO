@@ -25,10 +25,11 @@ public class LiteralString extends Literal{
 
     /**
      * 
-     * @return the value of the Literal
+     * @return the value of the Literal without '
      */
     public String asString(){
-        return _value;
+        String string = _value.replace("\'", "");
+        return string;
     }
 }
 
