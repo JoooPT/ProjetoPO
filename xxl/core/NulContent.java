@@ -6,4 +6,13 @@ public class NulContent extends Content {
     public static NulContent getNulContent() {
         return _nulContent;
     } 
+
+    @Override
+    public String toString(){
+        return "";
+    }
+
+    public Literal value(){
+        return null;
+    }
 }

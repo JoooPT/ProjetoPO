@@ -18,16 +18,17 @@ public class Reference extends Content {
         _spreadsheet = spreadsheet;
     }
 
-    @Override
-    public String toString(){
-        return "=" + _row + ";" + _column;
+    
+    public String toStringNotArgument(){
+        return "=" + this.toString();
     }
 
     /**
      * Diferent annotation for the reference
      * @return the reference as a String without the "=" 
      */
-    public String toStringArgument(){
+    @Override
+    public String toString(){
         return "" + _row + ";" + _column;   
     }
 

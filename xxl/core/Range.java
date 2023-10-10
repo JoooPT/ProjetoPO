@@ -34,4 +34,6 @@ public class Range {
 
         return list;
     }
+
+    // Needs a toString for IntervalFunction.toString()
 }

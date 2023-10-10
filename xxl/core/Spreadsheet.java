@@ -99,9 +99,8 @@ public class Spreadsheet implements Serializable {
    * @param contentSpecification the specification in a string format of the content to put
    *        in the specified cell.
    */
-  public void insertContent(int row, int column, String contentSpecification) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
+  public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
     Cell cell = getCell(row, column);
-    Parser parser = new Parser();
-    cell.setContent(parser.parseContent(contentSpecification));
+    cell.setContent(content);
   }
 }

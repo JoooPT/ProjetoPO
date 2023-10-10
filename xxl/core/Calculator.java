@@ -9,8 +9,8 @@ import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 // FIXME import classes
 
 /**
@@ -19,14 +19,16 @@ import java.util.Set;
 public class Calculator {
   /** The current spreadsheet. */
   private Spreadsheet _spreadsheet;
-  private Set<User> _users;
+  private Map<String,User> _users;
   private User _userActive;
   
   // FIXME add more fields and methods if needed
   
 
   public Calculator(){
-    _users = new HashSet<User>();
+    _users = new HashMap<String,User>();
+    _userActive = new User("root");
+    _users.put("root",_userActive);
   }
 
   /**
@@ -78,7 +80,7 @@ public class Calculator {
    * @param filename name of the text input file
    * @throws ImportFileException
    */
-  public void importFile(String filename) throws ImportFileException {
+  public void importFile(String filename) throws ImportFileException, IOException {
     try {
       // FIXME open import file and feed entries to new spreadsheet (in a cycle)
       //       each entry is inserted using insertContent of Spreadsheet. Set new
@@ -96,15 +98,28 @@ public class Calculator {
    */
   public void createNewSpreadSheet(int rows, int columns){
     _spreadsheet = new Spreadsheet(rows, columns);
+    _userActive.add(_spreadsheet);
   }
 
   /**
-   * 
+   * Creates a new User and sets him as active
    * @param name of the new user  
    * @return true if a new user was sucessfuly created, false otherwise
    */
   public boolean createUser(String name){
-    return _users.add(new User(name));
+    if(!_users.containsKey(name)){
+      User newUser = new User(name);
+      _userActive = newUser;
+      _users.put(name,newUser);
+    return true;
+    }
+    else {return false;}
+  }
+
+  public void setActiveUser(String name){
+    if(_users.containsKey(name)){
+    _userActive = _users.get(name);
+    }
   }
   
 }

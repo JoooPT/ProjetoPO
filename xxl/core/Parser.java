@@ -34,16 +34,17 @@ class Parser {
     return _spreadsheet;
   }
 
-  private void parseDimensions(Reader reader) {
+  private void parseDimensions(BufferedReader reader) throws IOException, UnrecognizedEntryException {
     int rows = -1;
     int columns = -1;
     
     for (int i = 0; i < 2; i++) {
+      String line = reader.readLine();
       String[] dimension = reader.readLine().split("=");
       if (dimension[0].equals("linhas"))
         rows = Integer.parseInt(dimension[1]);
       else if (dimension[0].equals("colunas"))
-        columns = Integer.parseInt(contentdimension[1]);
+        columns = Integer.parseInt(dimension[1]);
       else
         throw new UnrecognizedEntryException(line);
     }
@@ -63,44 +64,44 @@ class Parser {
     if (components.length == 2) {
       String[] address = components[0].split(";");
       Content content = parseContent(components[1]);
-      _spreadsheet.insert(Integer.parseInt(address[0]), Integer.parseInt(address[1]), content);
+      _spreadsheet.insertContent(Integer.parseInt(address[0]), Integer.parseInt(address[1]), content);
     } else
       throw new UnrecognizedEntryException("Wrong format in line: " + line);
   }
 
   // parse the begining of an expression
-  Content parseContent(String contentSpecification) {
+  Content parseContent(String contentSpecification)throws UnrecognizedEntryException {
     char c = contentSpecification.charAt(0);
 
     if (c == '=')
-      parseContentExpression(contentSpecification.substring(1));
+      return parseContentExpression(contentSpecification.substring(1));
     else
-      parseLiteral(contentSpecification);
+      return parseLiteral(contentSpecification);
   }
 
   private Literal parseLiteral(String literalExpression) throws UnrecognizedEntryException {
     if (literalExpression.charAt(0) == '\'')
-      return new literal String with literalExpression;
+      return new LiteralString(literalExpression);
     else {
       try {
         int val = Integer.parseInt(literalExpression);
-        return new literal Integer with val;
+        return new LiteralInteger(val);
       } catch (NumberFormatException nfe) {
-        throw new UnrecognizedEntryException("Número inválido: " + expression);
+        throw new UnrecognizedEntryException("Número inválido: " + literalExpression);
       }
     }
   }
 
   // contentSpecification is what comes after '='
-  private Content parseContentExpression(String contentSpecification) throws UnrecognizedEntryException /more exceptions */ {
+  private Content parseContentExpression(String contentSpecification) throws UnrecognizedEntryException /*more exceptions */ {
     if (contentSpecification.contains("("))
       return parseFunction(contentSpecification);
     // It is a reference
-    String[] address = contentSpecificationaddress.split(";");
-    return new Referência at Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]);
+    String[] address = contentSpecification.split(";");
+    return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]), _spreadsheet);
   }
 
-  private Content parseFunction(String functionSpecification) throws UnrecognizedEntryException /more exceptions */ {
+  private Content parseFunction(String functionSpecification) throws UnrecognizedEntryException /*more exceptions */ {
     String[] components = functionSpecification.split("[()]");
     if (components[1].contains(","))
       return parseBinaryFunction(components[0], components[1]);
@@ -111,21 +112,21 @@ class Parser {
   private Content parseBinaryFunction(String functionName, String args) throws UnrecognizedEntryException /* , more Exceptions */ {
     String[] arguments = args.split(",");
     Content arg0 = parseArgumentExpression(arguments[0]);
-    Content arg1 = parseArgumentExpression(argarguments[1]);
+    Content arg1 = parseArgumentExpression(arguments[1]);
     
     return switch (functionName) {
-      case "ADD" -> new Add function with (arg0, arg1);
-      case "SUB" -> new Sub function with (arg0, arg1);
-      case "MUL" -> new Mul function with (arg0, arg1);
-      case "DIV" -> new Div function with (arg0, arg1);
-      default -> dar erro com função inválida: functionName ;
+      case "ADD" -> new Add(functionName, arg0, arg1);
+      case "SUB" -> new Sub(functionName, arg0, arg1);
+      case "MUL" -> new Mul(functionName, arg0, arg1);
+      case "DIV" -> new Div(functionName, arg0, arg1);
+      default -> throw new UnrecognizedEntryException("Função inválida:"+ functionName);
     };
   }
 
   private Content parseArgumentExpression(String argExpression) throws UnrecognizedEntryException {
     if (argExpression.contains(";")  && argExpression.charAt(0) != '\'') {
       String[] address = argExpression.split(";");
-      return new referência at Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]);
+      return new Reference(Integer.parseInt(address[0].trim()), Integer.parseInt(address[1]),_spreadsheet);
       // pode ser diferente do anterior em parseContentExpression
     } else
       return parseLiteral(argExpression);
@@ -133,13 +134,13 @@ class Parser {
 
   private Content parseIntervalFunction(String functionName, String rangeDescription)
     throws UnrecognizedEntryException /* , more exceptions ? */ {
-    Range range = _spredsheet.buildRange(rangeDescription);
+    Range range = _spreadsheet.createRange(rangeDescription);
     return switch (functionName) {
-      case "CONCAT" -> new Concat com range 
-      case "COASLECE" -> new Coaslece com range;
-      case "PRODUCT" -> new Product com range;
-      case "AVERAGE" -> new Average com range;
-      default -> dar erro com função inválida: functionName;
+      case "CONCAT" -> new Concat(functionName, range);
+      case "COASLECE" -> new Coalesce(functionName, range);
+      case "PRODUCT" -> new Product(functionName, range);
+      case "AVERAGE" -> new Average(functionName, range);
+      default -> throw new UnrecognizedEntryException(rangeDescription);
     };
   }
 
