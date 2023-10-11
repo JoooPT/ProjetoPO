@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Collections;
 
 public class Range {
     
@@ -21,18 +22,18 @@ public class Range {
         _spreadsheet = spreadsheet;
     }
 
-    List<Cell> getCells() {
+    public List<Cell> getCells() {
         List<Cell> list = new ArrayList<Cell>();
         if (_beginRow == _endRow) {
-            for (int col = _beginColumn; col < _endColumn; col++) {
+            for (int col = _beginColumn; col <= _endColumn; col++) {
                 list.add(_spreadsheet.getCell(_beginRow, col));
             }
         }
-        else for (int row = _beginRow; row < _endRow; row++) {
+        else for (int row = _beginRow; row <= _endRow; row++) {
                 list.add(_spreadsheet.getCell(row, _beginColumn));
             }
 
-        return list;
+        return Collections.unmodifiableList(list);
     }
 
     // Needs a toString for IntervalFunction.toString()
