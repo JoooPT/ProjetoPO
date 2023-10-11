@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public abstract class BinaryFunction extends Function {
     private Content _arg1;
     private Content _arg2;
@@ -12,10 +14,16 @@ public abstract class BinaryFunction extends Function {
 
     @Override
     public String toString(){
-        String value = "" + super.value() + "=" + super.getName();
+        String value = null;
+        try{
+            value = "" + super.value();  
+        } catch(UnsupportedArgument e){
+            value = "#VALUE";
+        }
+        String name = "=" + super.getName();
         String args =  "(" + _arg1.toString() + "," + _arg2.toString() + ")";
         args = args.replace("=","");
-        return value + args;
+        return value + name + args;
     }
 
     public Content getArg1(){

@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public class LiteralInteger extends Literal {
     private int _value;
 
@@ -19,8 +21,8 @@ public class LiteralInteger extends Literal {
     /**
      * @return the value as a String if it is a String otherwise throws Exception
      */
-    public String asString(){ //throws  
-        return ""; //throw new 
+    public String asString() throws UnsupportedArgument{ 
+        throw new UnsupportedArgument(); 
     }
 
     /**

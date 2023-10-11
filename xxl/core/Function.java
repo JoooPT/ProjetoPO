@@ -1,5 +1,9 @@
 package xxl.core;
 
+import java.nio.channels.UnsupportedAddressTypeException;
+
+import xxl.core.exception.UnsupportedArgument;
+
 public abstract class Function extends Content {
     private String _name;
 
@@ -15,17 +19,17 @@ public abstract class Function extends Content {
         return _name;
     }
 
-    public String asString(){
+    public String asString() throws UnsupportedArgument {
         return value().asString();
     }
 
-    public int asInt(){
+    public int asInt() throws UnsupportedArgument{
         return value().asInt();
     }
 
-    protected abstract Literal compute();
+    protected abstract Literal compute() throws UnsupportedArgument;
 
-    public Literal value(){
+    public Literal value() throws UnsupportedArgument{
         return compute();
     }
 }

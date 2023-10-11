@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public abstract class IntervalFunction extends Function {
     private Range _range;
     
@@ -10,7 +12,7 @@ public abstract class IntervalFunction extends Function {
 
     @Override
     public String toString(){
-        return "" + super.value() + "=" + super.getName() + "(" + _range.toString() + ")";
+        return "Notimplementedyet" ;//"" + super.value() + "=" + super.getName() + "(" + _range.toString() + ")";
     }
 
     public Range getRange(){
