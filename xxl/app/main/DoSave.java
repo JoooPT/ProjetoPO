@@ -30,9 +30,7 @@ class DoSave extends Command<Calculator> {
         addStringField("filename", Message.saveAs());
         _receiver.saveAs(stringField("filename"));
       }
-    } catch (FileNotFoundException | MissingFileAssociationException e) {
-      System.err.println("Error: "  + e.getMessage());
-    } catch (IOException e) {
+    } catch (MissingFileAssociationException | IOException e) {
       System.err.println("Error: "  + e.getMessage());
     }
   }
