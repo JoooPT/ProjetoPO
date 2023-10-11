@@ -3,6 +3,9 @@ package xxl.core;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+
+import xxl.core.exception.InvalidRangeException;
+
 import java.util.HashMap;
 import java.util.Collections;
 
@@ -29,10 +32,11 @@ public class Range {
                 list.add(_spreadsheet.getCell(_beginRow, col));
             }
         }
-        else for (int row = _beginRow; row <= _endRow; row++) {
+        else if(_beginColumn == _endColumn){
+            for (int row = _beginRow; row <= _endRow; row++) {
                 list.add(_spreadsheet.getCell(row, _beginColumn));
             }
-
+        }         
         return Collections.unmodifiableList(list);
     }
 

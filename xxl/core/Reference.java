@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public class Reference extends Content {
     private int _row;
     private int  _column;
@@ -28,7 +30,7 @@ public class Reference extends Content {
      * 
      * @return the value of the reference cell
      */
-    Literal value(){
+    Literal value() throws UnsupportedArgument{
         return _spreadsheet.getCell(_row, _column).value();
     }
 }

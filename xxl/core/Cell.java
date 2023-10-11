@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public class Cell {
     
     private int _row;
@@ -12,6 +14,7 @@ public class Cell {
     public Cell(int row, int column) {
         _row = row;
         _column = column;
+        _content = NulContent.getNulContent();
     }
 
     public int getRow(){
@@ -43,7 +46,7 @@ public class Cell {
      * 
      * @returns the content of the cell as a literal
      */
-    Literal value() {
+    Literal value() throws UnsupportedArgument {
         return _content.value();
     }
 }

@@ -12,7 +12,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
-
+import xxl.core.exception.InvalidRangeException;
+import xxl.core.exception.OutofBoundsException;
 import xxl.core.exception.UnrecognizedEntryException;
 
 /**
@@ -68,7 +69,7 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer.getCells();
   }
 
-  public Range createRange(String range) /*throws ? */ {
+  public Range createRange(String range) throws InvalidRangeException, OutofBoundsException {
     String[] rangeCoordinates;
     int firstRow, firstColumn, lastRow, lastColumn;
     
@@ -84,8 +85,12 @@ public class Spreadsheet implements Serializable {
       firstColumn = lastColumn = Integer.parseInt(rangeCoordinates[1]);
     }
 
-    // check if coordinates are valid
-    // if yes
+    if (firstRow != lastRow && firstColumn != lastColumn){
+      throw new InvalidRangeException();
+    }
+    else if(firstRow < 1 || lastRow > _rows || firstColumn < 1 || lastColumn > _columns){
+      throw new OutofBoundsException();
+    }
     return new Range(firstRow, lastRow, firstColumn, lastColumn, this);
   }
 
