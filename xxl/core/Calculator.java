@@ -1,7 +1,11 @@
 package xxl.core;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 import xxl.core.exception.ImportFileException;
 import xxl.core.exception.MissingFileAssociationException;
@@ -48,7 +52,9 @@ public class Calculator {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
   public void save() throws FileNotFoundException, MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
+    try (ObjectOutputStream obOut = new ObjectOutputStream(new FileOutputStream(_spreadsheet.getFilename()))) {
+      obOut.writeObject(_spreadsheet);
+    }
   }
   
   /**
@@ -62,6 +68,10 @@ public class Calculator {
    */
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
     // FIXME implement serialization method
+    try (ObjectOutputStream obOut = new ObjectOutputStream(new FileOutputStream(filename))) {
+      obOut.writeObject(_spreadsheet);
+      _spreadsheet.setFileName(filename);
+    }
   }
   
   /**
@@ -70,8 +80,11 @@ public class Calculator {
    * @throws UnavailableFileException if the specified file does not exist or there is
    *         an error while processing this file.
    */
-  public void load(String filename) throws UnavailableFileException {
-    // FIXME implement serialization method
+  public void load(String filename) throws UnavailableFileException, IOException, ClassNotFoundException {
+    try (ObjectInputStream objIn =  new ObjectInputStream(new FileInputStream(filename));) {
+      Object anObject = objIn.readObject();
+      _spreadsheet = (Spreadsheet)anObject;
+    }
   }
   
   /**
@@ -95,6 +108,7 @@ public class Calculator {
    */
   public void createNewSpreadSheet(int rows, int columns){
     _spreadsheet = new Spreadsheet(rows, columns);
+    _spreadsheet.addUser(_userActive);
     _userActive.add(_spreadsheet);
   }
 

@@ -60,7 +60,6 @@ public class Spreadsheet implements Serializable {
     return _cells.getCell(row, column);
   }
 
-
   /**
    * 
    * @returns the cells in the cut buffer as a list
