@@ -29,7 +29,7 @@ class DoShow extends Command<Spreadsheet> {
     try{
       _receiver.createRange(stringField("gama"));
     } catch(InvalidRangeException e) {
-      throw new InvalidCellRangeException(stringField("gama"));
+      System.err. println("Erro: " + (new InvalidCellRangeException(e.getInvalidRange())).getMessage());
     } 
     List<Cell> list = range.getCells();
     for (Cell c: list) {

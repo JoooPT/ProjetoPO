@@ -23,7 +23,7 @@ public class App {
           // no behavior described: just present the problem
           e.printStackTrace();
         } catch (InvalidRangeException e) {
-          throw new InvalidCellRangeException(e.getInvalidRange());
+          System.err. println("Erro: " + (new InvalidCellRangeException(e.getInvalidRange())).getMessage());
         }
       }
       
