@@ -22,8 +22,9 @@ class DoNew extends Command<Calculator> {
   
   @Override
   protected final void execute() throws CommandException {
-    if(Form.confirm(Message.saveBeforeExit())){
-      if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
+    
+    if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
+      if(Form.confirm(Message.saveBeforeExit())){  
         try{
           if(_receiver.getSpreadsheet().noFilename()){
             _receiver.saveAs(Form.requestString(Message.saveAs()));
@@ -36,20 +37,6 @@ class DoNew extends Command<Calculator> {
       }
     }
     _receiver.createNewSpreadSheet(integerField("rows"), integerField("columns"));
-  }
-
-  public Boolean readBoolean(String prompt){
-    String receiveMessage = "nothing";
-    while(!receiveMessage.equals("n") && !receiveMessage.equals("s")){
-      receiveMessage = Form.requestString(prompt);
-      System.out.println(receiveMessage);
-    }
-
-    if(receiveMessage.equals("n")){
-      return false;
-    } else{
-      return true;
-    }
   }
 
 }
