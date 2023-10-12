@@ -10,26 +10,32 @@ public class Cell implements Serializable{
     private int _column;
     private Content _content;
 
-    /** 
-     * 
-     */
+    /* Constructor */
     public Cell(int row, int column) {
         _row = row;
         _column = column;
         _content = NulContent.getNulContent();
     }
 
+    /**
+     * 
+     * @returns the row of the cell.
+     */
     public int getRow(){
         return _row;
     }
 
+    /**
+     * 
+     * @returns the column of the cell.
+     */
     public int getCol(){
         return _column;
     }
 
     /**
      * 
-     * @returns the coordinates of the cell as a String
+     * @returns the coordinates of the cell as a String.
      */
     @Override
     public String toString() {

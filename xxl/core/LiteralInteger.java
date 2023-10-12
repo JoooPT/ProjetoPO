@@ -21,14 +21,15 @@ public class LiteralInteger extends Literal implements Serializable {
     }
 
     /**
-     * @return the value as a String if it is a String otherwise throws Exception
+     * @returns the value as a String if it is a String, otherwise throws Exception.
+     * @throws UnsupportedArgument
      */
     public String asString() throws UnsupportedArgument{ 
         throw new UnsupportedArgument(); 
     }
 
     /**
-     * @return the value of the Literal as a integer
+     * @returns the value of the Literal as an integer.
      */
     public int asInt(){
         return _value;

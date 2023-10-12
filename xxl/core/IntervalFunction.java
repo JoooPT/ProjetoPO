@@ -1,7 +1,5 @@
 package xxl.core;
 
-import xxl.core.exception.UnsupportedArgument;
-
 public abstract class IntervalFunction extends Function {
     private Range _range;
     

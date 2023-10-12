@@ -21,7 +21,7 @@ public class LiteralString extends Literal implements Serializable{
     }
 
     /**
-     * @return the value as a integer if it is a integer otherwise throws Exception
+     * @returns the value as a integer if it is a integer otherwise throws Exception
      */
     public int asInt() throws UnsupportedArgument{
         throw new UnsupportedArgument();

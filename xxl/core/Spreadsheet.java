@@ -1,16 +1,12 @@
 package xxl.core;
 
-// FIXME import classes
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Collection;
+
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.HashMap;
 
 import xxl.core.exception.InvalidRangeException;
 import xxl.core.exception.UnrecognizedEntryException;
@@ -30,6 +26,7 @@ public class Spreadsheet implements Serializable {
   private Set<User> _users;
   private String _filename;
   
+  /* Constructor */
   public Spreadsheet(int rows, int columns) {
     _rows = rows;
     _columns = columns;
@@ -38,40 +35,71 @@ public class Spreadsheet implements Serializable {
     _users = new HashSet<User>();
   }
 
-  // FIXME define methods
-
+  /**
+   * 
+   * @param filename
+   */
   public void setFileName(String filename){
     _filename = filename;
   }
 
+  /**
+   * 
+   * @returns the name of the file associated with the spreadsheet.
+   */
   public String getFilename(){
     return _filename;
   }
 
+  /**
+   * 
+   * @return true if file has no name, false otherwise.
+   */
   public boolean noFilename(){
     return _filename == null;
   }
 
+  /**
+   * 
+   * @param status
+   */
   public void setChangedStatus(Boolean status){
     _changed = status;
   }
   
+  /**
+   * 
+   * @returns true if the spreadsheet has been changed since the last save.
+   */
   public boolean changed(){
     return _changed;
   }
 
+  /**
+   * 
+   * @param row
+   * @param column
+   * @returns the cell with the specified coordinates.
+   */
   public Cell getCell(int row, int column){
     return _cells.getCell(row, column);
   }
 
   /**
    * 
-   * @returns the cells in the cut buffer as a list
+   * @returns the cells in the cut buffer as a list.
    */
   public List<Cell> getCutBuffer() {
     return _cutBuffer.getCells();
   }
 
+  /**
+   * Creates a new range
+   * 
+   * @param range in the format "firstRow;firstColumn:lastRow;lastColumn"
+   * @returns the range that is created
+   * @throws InvalidRangeException
+   */
   public Range createRange(String range) throws InvalidRangeException {
     String[] rangeCoordinates;
     int firstRow, firstColumn, lastRow, lastColumn;
@@ -97,11 +125,23 @@ public class Spreadsheet implements Serializable {
     return new Range(firstRow, lastRow, firstColumn, lastColumn, this);
   }
 
+  /** 
+   * Copies a range of cells to the cut buffer.
+   * 
+   * @param range in the format "firstRow;firstColumn:lastRow;lastColumn"
+   * @throws InvalidRangeException
+   */
   public void copy(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
     _cutBuffer.setCells(rangeObj.getCells());
   }
 
+  /**
+   * Clears a range of cells, removing their content
+   * 
+   * @param range in the format "firstRow;firstColumn:lastRow;lastColumn"
+   * @throws InvalidRangeException
+   */
   public void clear(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
     List<Cell> list = rangeObj.getCells();
@@ -111,6 +151,10 @@ public class Spreadsheet implements Serializable {
     setChangedStatus(true);
   }
 
+  /**
+   * 
+   * @param user
+   */
   public void addUser(User user) {
     _users.add(user);
   }
@@ -118,12 +162,12 @@ public class Spreadsheet implements Serializable {
   /**
    * Insert specified content in specified address.
    *
-   * @param row the row of the cell to change 
-   * param column the column of the cell to change
-   * @param contentSpecification the specification in a string format of the content to put
-   *        in the specified cell.
+   * @param row of the cell to change. 
+   * @param column of the cell to change
+   * @param contentSpecification in a string format to put in the specified cell.
+   * @throws UnrecognizedEntryException
    */
-  public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
+  public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException {
     Cell cell = getCell(row, column);
     cell.setContent(content);
     _cells.addCell(cell);

@@ -20,7 +20,10 @@ public class Reference extends Content {
         _spreadsheet = spreadsheet;
     }
 
-    
+    /**
+     * @throws UnsupportedArgument
+     * @returns the value of the referenced cell as a String.
+     */
     @Override
     public String toString(){
         String value = null;
@@ -34,8 +37,8 @@ public class Reference extends Content {
     }
 
     /**
-     * 
-     * @return the value of the reference cell
+     * @throws UnsupportedArgument
+     * @returns the value of the reference cell
      */
     Literal value() throws UnsupportedArgument{
         return _spreadsheet.getCell(_row, _column).value();

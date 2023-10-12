@@ -13,23 +13,19 @@ import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-// FIXME import classes
 
 /**
  * Class representing a spreadsheet application.
  */
 public class Calculator {
-  /** The current spreadsheet. */
-  private Spreadsheet _spreadsheet;
+  
+  private Spreadsheet _spreadsheet; /* The current spreadsheet. */
   private Map<String,User> _users;
   private User _userActive;
-  
-  // FIXME add more fields and methods if needed
-  
 
+  /* Constructor */
   public Calculator(){
     _users = new HashMap<String,User>();
     _userActive = new User("root");
@@ -95,6 +91,8 @@ public class Calculator {
    *
    * @param filename name of the text input file
    * @throws ImportFileException
+   * @throws IOException
+   * @throws InvalidRangeException
    */
   public void importFile(String filename) throws ImportFileException, IOException, InvalidRangeException {
     try {
@@ -105,9 +103,9 @@ public class Calculator {
   }
   
   /**
-   * 
-   * @param rows row size of the New spreadsheet
-   * @param columns column size of the New spreadsheet
+   * Creates a new spreadsheet.
+   * @param rows row size of the New spreadsheet.
+   * @param columns column size of the New spreadsheet.
    */
   public void createNewSpreadSheet(int rows, int columns){
     _spreadsheet = new Spreadsheet(rows, columns);
@@ -130,6 +128,10 @@ public class Calculator {
     else {return false;}
   }
 
+  /**
+   * Changes the active user of the application.
+   * @param name of the new active user
+   */
   public void setActiveUser(String name){
     if(_users.containsKey(name)){
     _userActive = _users.get(name);

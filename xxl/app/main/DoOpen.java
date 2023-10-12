@@ -2,13 +2,11 @@ package xxl.app.main;
 
 import java.io.IOException;
 
-import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import xxl.core.Calculator;
 import xxl.core.exception.UnavailableFileException;
 import xxl.app.exception.FileOpenFailedException;
-// FIXME import classes
 
 /**
  * Open existing file.

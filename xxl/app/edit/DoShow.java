@@ -1,6 +1,5 @@
 package xxl.app.edit;
 
-import java.util.Collection;
 import java.util.List;
 
 import xxl.app.exception.InvalidCellRangeException;
@@ -10,8 +9,6 @@ import pt.tecnico.uilib.menus.CommandException;
 import xxl.core.Spreadsheet;
 import xxl.core.exception.InvalidRangeException;
 import xxl.core.Range;
-
-// FIXME import classes
 
 /**
  * Class for searching functions.

@@ -2,11 +2,6 @@ package xxl.core;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-
-import xxl.core.exception.InvalidRangeException;
-
-import java.util.HashMap;
 import java.util.Collections;
 
 public class Range {
@@ -17,6 +12,7 @@ public class Range {
     private int _endColumn;
     private Spreadsheet _spreadsheet;
 
+    /* Constructor */
     public Range(int beginRow, int endRow, int beginColumn, int endColumn, Spreadsheet spreadsheet) {
         _beginRow = beginRow;
         _beginColumn = beginColumn;
@@ -25,6 +21,10 @@ public class Range {
         _spreadsheet = spreadsheet;
     }
 
+    /**
+     * 
+     * @returns an umnodifiable list with the cells in the range.
+     */
     public List<Cell> getCells() {
         List<Cell> list = new ArrayList<Cell>();
         if (_beginRow == _endRow) {
