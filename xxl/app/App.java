@@ -2,6 +2,8 @@ package xxl.app;
 
 import pt.tecnico.uilib.Dialog;
 import xxl.core.exception.ImportFileException;
+import xxl.core.exception.InvalidRangeException;
+import xxl.app.exception.InvalidCellRangeException;
 
 import java.io.IOException;
 
@@ -20,6 +22,8 @@ public class App {
         } catch (IOException |ImportFileException e) {
           // no behavior described: just present the problem
           e.printStackTrace();
+        } catch (InvalidRangeException e) {
+          throw new InvalidCellRangeException(e.getInvalidRange());
         }
       }
       

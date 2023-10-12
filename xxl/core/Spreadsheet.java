@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 import xxl.core.exception.InvalidRangeException;
-import xxl.core.exception.OutofBoundsException;
 import xxl.core.exception.UnrecognizedEntryException;
 
 /**
@@ -69,7 +68,7 @@ public class Spreadsheet implements Serializable {
     return _cutBuffer.getCells();
   }
 
-  public Range createRange(String range) throws InvalidRangeException, OutofBoundsException {
+  public Range createRange(String range) throws InvalidRangeException {
     String[] rangeCoordinates;
     int firstRow, firstColumn, lastRow, lastColumn;
     
@@ -86,20 +85,20 @@ public class Spreadsheet implements Serializable {
     }
 
     if (firstRow != lastRow && firstColumn != lastColumn){
-      throw new InvalidRangeException();
+      throw new InvalidRangeException(range);
     }
     else if(firstRow < 1 || lastRow > _rows || firstColumn < 1 || lastColumn > _columns){
-      throw new OutofBoundsException();
+      throw new InvalidRangeException(range);
     }
     return new Range(firstRow, lastRow, firstColumn, lastColumn, this);
   }
 
-  public void copy(String range) {
+  public void copy(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
     _cutBuffer.setCells(rangeObj.getCells());
   }
 
-  public void clear(String range) {
+  public void clear(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
     List<Cell> list = rangeObj.getCells();
     for (Cell c: list) {

@@ -21,7 +21,6 @@ class DoSave extends Command<Calculator> {
   
   @Override
   protected final void execute() {
-    // FIXME implement command and create a local Form
     try {
       if (_receiver.getSpreadsheet().getFilename() != null) {
         _receiver.save();

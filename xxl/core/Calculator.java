@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import xxl.core.exception.ImportFileException;
+import xxl.core.exception.InvalidRangeException;
 import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
@@ -93,7 +94,7 @@ public class Calculator {
    * @param filename name of the text input file
    * @throws ImportFileException
    */
-  public void importFile(String filename) throws ImportFileException, IOException {
+  public void importFile(String filename) throws ImportFileException, IOException, InvalidRangeException {
     try {
       _spreadsheet = new Parser().parseFile(filename);
     } catch (IOException | UnrecognizedEntryException /* FIXME maybe other exceptions */ e) {
