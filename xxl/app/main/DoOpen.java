@@ -26,7 +26,7 @@ class DoOpen extends Command<Calculator> {
         String filename = stringField("filename");
         _receiver.load(filename);
       } catch (UnavailableFileException | IOException | ClassNotFoundException e) {
-      throw new FileOpenFailedException(e);
+        throw new FileOpenFailedException(e);
       }
   }
 }
