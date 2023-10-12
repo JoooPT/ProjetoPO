@@ -82,7 +82,7 @@ public class Calculator {
    *         an error while processing this file.
    */
   public void load(String filename) throws UnavailableFileException, IOException, ClassNotFoundException {
-    try (ObjectInputStream objIn =  new ObjectInputStream(new FileInputStream(filename));) {
+    try (ObjectInputStream objIn =  new ObjectInputStream(new FileInputStream(filename))) {
       Object anObject = objIn.readObject();
       _spreadsheet = (Spreadsheet)anObject;
     }
