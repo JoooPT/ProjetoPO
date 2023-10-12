@@ -16,23 +16,17 @@ class DoNew extends Command<Calculator> {
 
   DoNew(Calculator receiver) {
     super(Label.NEW, receiver);
-    if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().noFilename()){
-      addBooleanField("save", Message.saveBeforeExit());
-      addStringField("name",Message.saveAs());
-    }
     addIntegerField("rows",Message.lines());
     addIntegerField("columns",Message.columns());
   }
   
   @Override
   protected final void execute() throws CommandException {
-    Boolean aa = booleanField("save");
-    System.out.println(aa);
-    if(aa){
+    if(Form.confirm(Message.saveBeforeExit())){
       if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
         try{
           if(_receiver.getSpreadsheet().noFilename()){
-            _receiver.saveAs(stringField("name"));
+            _receiver.saveAs(Form.requestString(Message.saveAs()));
           } else {
             _receiver.save();
           }
@@ -43,4 +37,19 @@ class DoNew extends Command<Calculator> {
     }
     _receiver.createNewSpreadSheet(integerField("rows"), integerField("columns"));
   }
+
+  public Boolean readBoolean(String prompt){
+    String receiveMessage = "nothing";
+    while(!receiveMessage.equals("n") && !receiveMessage.equals("s")){
+      receiveMessage = Form.requestString(prompt);
+      System.out.println(receiveMessage);
+    }
+
+    if(receiveMessage.equals("n")){
+      return false;
+    } else{
+      return true;
+    }
+  }
+
 }
