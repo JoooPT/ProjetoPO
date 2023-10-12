@@ -25,15 +25,14 @@ class DoShow extends Command<Spreadsheet> {
   
   @Override
   protected final void execute() throws CommandException {
-    Range range = null;
     try{
-      _receiver.createRange(stringField("gama"));
+      Range range = _receiver.createRange(stringField("gama"));
+      List<Cell> list = range.getCells();
+      for (Cell c: list) {
+        _display.addNewLine(c, false);
+      }
     } catch(InvalidRangeException e) {
-      System.err. println("Erro: " + (new InvalidCellRangeException(e.getInvalidRange())).getMessage());
+      throw new InvalidCellRangeException(e.getInvalidRange());
     } 
-    List<Cell> list = range.getCells();
-    for (Cell c: list) {
-      _display.addNewLine(c, false);
-    }
   }
 }

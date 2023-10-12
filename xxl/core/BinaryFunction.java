@@ -21,8 +21,16 @@ public abstract class BinaryFunction extends Function {
             value = "#VALUE";
         }
         String name = "=" + super.getName();
-        String args =  "(" + _arg1.toString() + "," + _arg2.toString() + ")";
-        args = args.replace("=","");
+        String arg1 = "" + _arg1;
+        String arg2 = "" + _arg2;
+        if(arg1.contains("=")){
+            arg1 = (_arg1.toString().split("="))[1];
+        }
+        if(arg2.contains("=")){
+            arg2 = (_arg2.toString().split("="))[1];
+        }
+
+        String args =  "(" + arg1 + "," + arg2 + ")";
         return value + name + args;
     }
 

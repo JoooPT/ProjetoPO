@@ -48,11 +48,15 @@ public class Spreadsheet implements Serializable {
     return _filename;
   }
 
+  public boolean noFilename(){
+    return _filename == null;
+  }
+
   public void setChangedStatus(Boolean status){
     _changed = status;
   }
   
-  public boolean getChangedStatus(){
+  public boolean changed(){
     return _changed;
   }
 
@@ -122,6 +126,7 @@ public class Spreadsheet implements Serializable {
   public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException /* FIXME maybe add exceptions */ {
     Cell cell = getCell(row, column);
     cell.setContent(content);
+    _cells.addCell(cell);
     setChangedStatus(true);
   }
 }

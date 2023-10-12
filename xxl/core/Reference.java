@@ -23,7 +23,14 @@ public class Reference extends Content {
     
     @Override
     public String toString(){
-        return "=" + _row + ";" + _column;   
+        String value = null;
+        try{
+            value = "" + value();  
+        } catch(UnsupportedArgument e){
+            value = "#VALUE";
+        }
+        
+        return value + "=" + _row + ";" + _column;   
     }
 
     /**

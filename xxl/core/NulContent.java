@@ -13,6 +13,6 @@ public class NulContent extends Content {
     }
 
     public Literal value(){
-        return null;
+        return new LiteralString("#VALUE");
     }
 }

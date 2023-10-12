@@ -40,14 +40,13 @@ class Parser {
     int columns = -1;
     
     for (int i = 0; i < 2; i++) {
-      String line = reader.readLine();
       String[] dimension = reader.readLine().split("=");
       if (dimension[0].equals("linhas"))
         rows = Integer.parseInt(dimension[1]);
       else if (dimension[0].equals("colunas"))
         columns = Integer.parseInt(dimension[1]);
       else
-        throw new UnrecognizedEntryException(line);
+        throw new UnrecognizedEntryException(dimension[0]);
     }
 
     if (rows <= 0 || columns <= 0)
@@ -110,7 +109,7 @@ class Parser {
     return parseIntervalFunction(components[0], components[1]);
   }
 
-  private Content parseBinaryFunction(String functionName, String args) throws UnrecognizedEntryException /* , more Exceptions */ {
+  private Content parseBinaryFunction(String functionName, String args) throws UnrecognizedEntryException{
     String[] arguments = args.split(",");
     Content arg0 = parseArgumentExpression(arguments[0]);
     Content arg1 = parseArgumentExpression(arguments[1]);

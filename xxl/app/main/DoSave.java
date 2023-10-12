@@ -6,6 +6,8 @@ import java.nio.file.FileSystemNotFoundException;
 
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
+import pt.tecnico.uilib.menus.CommandException;
+import xxl.app.exception.FileOpenFailedException;
 import xxl.core.Calculator;
 // FIXME import classes
 import xxl.core.exception.MissingFileAssociationException;
@@ -17,20 +19,23 @@ class DoSave extends Command<Calculator> {
 
   DoSave(Calculator receiver) {
     super(Label.SAVE, receiver, xxl -> xxl.getSpreadsheet() != null);
+    if(receiver.getSpreadsheet() != null && receiver.getSpreadsheet().noFilename()){
+      addStringField("filename", Message.newSaveAs());
+    }
   }
   
   @Override
-  protected final void execute() {
+  protected final void execute() throws CommandException {
     try {
-      if (_receiver.getSpreadsheet().getFilename() != null) {
+      if (!_receiver.getSpreadsheet().noFilename()) {
         _receiver.save();
       }
       else {
-        addStringField("filename", Message.saveAs());
         _receiver.saveAs(stringField("filename"));
       }
     } catch (MissingFileAssociationException | IOException e) {
-      System.err.println("Error: "  + e.getMessage());
+      throw new FileOpenFailedException(e);
+      
     }
   }
 }
