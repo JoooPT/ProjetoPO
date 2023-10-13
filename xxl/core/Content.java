@@ -1,8 +1,10 @@
 package xxl.core;
 
+import java.io.Serializable;
+
 import xxl.core.exception.UnsupportedArgument;
 
-public abstract class Content {
+public abstract class Content implements Serializable{
     
     public abstract String toString();
     abstract Literal value() throws UnsupportedArgument;

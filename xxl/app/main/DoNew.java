@@ -25,15 +25,8 @@ class DoNew extends Command<Calculator> {
     
     if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
       if(Form.confirm(Message.saveBeforeExit())){  
-        try{
-          if(_receiver.getSpreadsheet().noFilename()){
-            _receiver.saveAs(Form.requestString(Message.saveAs()));
-          } else {
-            _receiver.save();
-          }
-        } catch (MissingFileAssociationException| IOException e) {
-          throw new FileOpenFailedException(e);
-        }  
+        Command<Calculator> save = new DoSave(_receiver);
+        save.performCommand();
       }
     }
     _receiver.createNewSpreadSheet(integerField("rows"), integerField("columns"));

@@ -1,8 +1,9 @@
 package xxl.core;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CutBuffer {
+public class CutBuffer implements Serializable{
     private List<Cell> _cells;
 
     /**

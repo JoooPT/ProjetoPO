@@ -2,6 +2,7 @@ package xxl.app.main;
 
 import java.io.IOException;
 
+import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import xxl.core.Calculator;
@@ -20,6 +21,13 @@ class DoOpen extends Command<Calculator> {
   
   @Override
   protected final void execute() throws CommandException {
+    
+    if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
+      if(Form.confirm(Message.saveBeforeExit())){  
+        Command<Calculator> save = new DoSave(_receiver);
+        save.performCommand();
+      }
+    }
       try {
         String filename = stringField("filename");
         _receiver.load(filename);

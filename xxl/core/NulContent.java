@@ -1,5 +1,7 @@
 package xxl.core;
 
+import xxl.core.exception.UnsupportedArgument;
+
 public class NulContent extends Content {
     private static NulContent _nulContent = new NulContent();
     private NulContent() {};
@@ -12,7 +14,7 @@ public class NulContent extends Content {
         return "";
     }
 
-    public Literal value(){
-        return new LiteralString("#VALUE");
+    public Literal value() throws UnsupportedArgument {
+        throw new UnsupportedArgument();
     }
 }

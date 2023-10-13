@@ -1,10 +1,8 @@
 package xxl.core;
 
-import java.io.Serializable;
-
 import xxl.core.exception.UnsupportedArgument;
 
-public class LiteralInteger extends Literal implements Serializable {
+public class LiteralInteger extends Literal {
     private int _value;
 
     /**
