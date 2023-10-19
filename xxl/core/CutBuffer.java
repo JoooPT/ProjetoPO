@@ -5,6 +5,7 @@ import java.util.List;
 
 public class CutBuffer implements Serializable{
     private List<Cell> _cells;
+    private String _direction;
 
     /**
      * @returns the cells in the cut buffer.
