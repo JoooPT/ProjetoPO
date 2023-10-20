@@ -1,5 +1,9 @@
 package xxl.core;
 
+import java.util.List;
+
+import xxl.core.exception.UnsupportedArgument;
+
 public class Concat extends IntervalFunction {
     
     public Concat(String name, Range range){
@@ -7,6 +11,16 @@ public class Concat extends IntervalFunction {
     }
 
     protected Literal compute(){
-        return new LiteralString("Not implemented yet");
+        List<Cell> list = getRange().getCells();
+        String res = "";
+        String str;
+        for (Cell c: list) {
+            try {
+                str = c.value().asString();
+                str = str.substring(1);
+                res += str;
+            } catch(UnsupportedArgument e){}
+        }
+        return new LiteralString(res);
     }
 }

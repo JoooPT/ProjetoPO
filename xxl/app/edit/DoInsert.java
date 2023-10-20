@@ -12,7 +12,7 @@ class DoInsert extends Command<Spreadsheet> {
 
   DoInsert(Spreadsheet receiver) {
     super(Label.INSERT, receiver);
-    // FIXME add fields
+    addStringField("input", Message.contents());
   }
   
   @Override

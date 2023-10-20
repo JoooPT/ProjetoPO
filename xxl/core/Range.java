@@ -41,4 +41,10 @@ public class Range {
     }
 
     // Needs a toString for IntervalFunction.toString()
+    public String toString(String str) {
+        if (_beginRow == _endRow && _beginColumn == _endColumn) {
+            return "" + _beginRow + ";" + _beginColumn;
+        }
+        return "" + _beginRow + ";" + _beginColumn + ":" + _endRow + ";" + _endColumn;
+    }
 }
