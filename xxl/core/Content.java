@@ -14,6 +14,7 @@ public abstract class Content implements Serializable{
     public int asInt() throws UnsupportedArgument {
         return value().asInt();
     }
+    public abstract Content copy();
 
 
 }

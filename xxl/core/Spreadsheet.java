@@ -33,6 +33,7 @@ public class Spreadsheet implements Serializable {
     _changed = true;
     _cells = new MapCells();
     _users = new HashSet<User>();
+    _cutBuffer = new CutBuffer();
   }
 
   /**
@@ -133,7 +134,7 @@ public class Spreadsheet implements Serializable {
    */
   public void copy(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
-    _cutBuffer.setCells(rangeObj.getCells());
+    _cutBuffer.setBuffer(rangeObj.getCells());
   }
 
   /**

@@ -21,4 +21,8 @@ public class Coalesce extends IntervalFunction{
         }
         return new LiteralString("");
     }
+
+    public Content copy(){
+        return new Coalesce(getName(), getRange());
+    }
 }

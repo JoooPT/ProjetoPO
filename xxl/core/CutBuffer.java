@@ -4,21 +4,27 @@ import java.io.Serializable;
 import java.util.List;
 
 public class CutBuffer implements Serializable{
-    private List<Cell> _cells;
+    private List<Content> _contentBuffer;
     private String _direction;
+
+    public CutBuffer(){
+        _contentBuffer = new ArrayList<Content>();
+    }
 
     /**
      * @returns the cells in the cut buffer.
      */
-    public List<Cell> getCells() {
-        return _cells;
+    public List<Cell> getBuffer() {
+        return _contentBuffer;
     }
 
     /**
      * @param cells copied to the cut buffer.
      */
-    public void setCells(List<Cell> cells) {
-        _cells = cells;
+    public void setBuffer(List<Cell> cells) {
+        for(Cell c: cells){
+            _contentBuffer.add(c.getCopyContent());
+        }
     }
 
 }

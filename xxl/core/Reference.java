@@ -43,4 +43,8 @@ public class Reference extends Content {
     Literal value() throws UnsupportedArgument{
         return _spreadsheet.getCell(_row, _column).value();
     }
+
+    public Content copy(){
+        return new Reference(_row, _column, _spreadsheet);
+    }
 }

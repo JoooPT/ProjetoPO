@@ -32,4 +32,8 @@ public class LiteralInteger extends Literal {
     public int asInt(){
         return _value;
     }
+
+    public Content copy(){
+        return new LiteralInteger(_value);
+    }
 }

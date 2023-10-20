@@ -33,5 +33,9 @@ public class LiteralString extends Literal {
         String string = _value.replace("\'", "");
         return string;
     }
+
+    public Content copy(){
+        return new LiteralString(_value);
+    }
 }
 

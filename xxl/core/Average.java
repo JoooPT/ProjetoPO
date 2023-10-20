@@ -23,4 +23,8 @@ public class Average extends IntervalFunction{
         }
         return new LiteralInteger(res % list.size());
     }
+
+    public Content copy(){
+        return new Average(getName(), getRange());
+    }
 }

@@ -17,4 +17,8 @@ public class Div extends BinaryFunction {
         int res = super.getArg1().asInt() / super.getArg2().asInt();
         return new LiteralInteger(res);
     }
+
+    public Content copy(){
+        return new Div(getName(), getArg1(), getArg2());
+    }
 }

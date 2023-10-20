@@ -17,4 +17,8 @@ public class NulContent extends Content {
     public Literal value() throws UnsupportedArgument {
         throw new UnsupportedArgument();
     }
+
+    public Content copy(){
+        return NulContent.getNulContent();
+    }
 }

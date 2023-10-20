@@ -23,4 +23,8 @@ public class Product extends IntervalFunction {
         }
         return new LiteralInteger(res);
     }
+
+    public Content copy(){
+        return new Product(getName(), getRange());
+    }
 }

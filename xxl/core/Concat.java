@@ -23,4 +23,8 @@ public class Concat extends IntervalFunction {
         }
         return new LiteralString(res);
     }
+
+    public Content copy(){
+        return new Concat(getName(), getRange());
+    }
 }
