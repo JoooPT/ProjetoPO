@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import xxl.core.exception.UnrecognizedEntryException;
 import xxl.core.exception.InvalidRangeException;
 
-class Parser {
+public class Parser {
 
   private Spreadsheet _spreadsheet;
   
@@ -51,7 +51,7 @@ class Parser {
     _spreadsheet = new Spreadsheet(rows, columns);
   }
 
-  private void parseLine(String line) throws UnrecognizedEntryException, InvalidRangeException  {
+  public void parseLine(String line) throws UnrecognizedEntryException, InvalidRangeException  {
     String[] components = line.split("\\|");
 
     if (components.length == 1) // do nothing
