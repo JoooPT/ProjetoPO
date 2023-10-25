@@ -17,7 +17,7 @@ public class Concat extends IntervalFunction {
         for (Cell c: list) {
             try {
                 str = c.value().asString();
-                str = str.substring(1);
+                str = str.substring(0);
                 res += str;
             } catch(UnsupportedArgument e){
                 str = "";

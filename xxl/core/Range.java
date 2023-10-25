@@ -28,6 +28,7 @@ public class Range {
     public int getBeginRow() {
         return _beginRow;
     }
+    
 
     /**
      * 
@@ -49,7 +50,8 @@ public class Range {
     }
 
     // Needs a toString for IntervalFunction.toString()
-    public String toString(String str) {
+    @Override
+    public String toString() {
         if (_beginRow == _endRow && _beginColumn == _endColumn) {
             return "" + _beginRow + ";" + _beginColumn;
         }
