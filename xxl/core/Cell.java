@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 import xxl.core.exception.UnsupportedArgument;
 
+import java.util.Set;
+import java.util.HashSet;
+
 public class Cell implements Serializable{
     
     private int _row;
     private int _column;
     private Content _content;
+    private Set<Observer> _observers = new HashSet<>();
 
     /* Constructor */
     public Cell(int row, int column) {
@@ -65,5 +69,18 @@ public class Cell implements Serializable{
      */
     Literal value(){
         return _content.value();
+    }
+
+    public boolean addObserver(Observer obs) {
+        return _observers.add(obs);
+    }
+      
+    public boolean removeObserver(Observer obs) {
+        return _observers.remove(obs);
+    }
+
+    private void notifyObservers() {
+        for (Observer obs : _observers)
+          obs.update();
     }
 }
