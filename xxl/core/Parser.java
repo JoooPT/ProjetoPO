@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import xxl.core.exception.UnrecognizedEntryException;
 import xxl.core.exception.InvalidRangeException;
 
+import java.util.List;
+
 public class Parser {
 
   private Spreadsheet _spreadsheet;
@@ -105,18 +107,26 @@ public class Parser {
     return parseIntervalFunction(components[0], components[1]);
   }
 
-  private Content parseBinaryFunction(String functionName, String args) throws UnrecognizedEntryException{
+  private BinaryFunction parseBinaryFunction(String functionName, String args) throws UnrecognizedEntryException{
     String[] arguments = args.split(",");
     Content arg0 = parseArgumentExpression(arguments[0]);
     Content arg1 = parseArgumentExpression(arguments[1]);
-    
-    return switch (functionName) {
-      case "ADD" -> new Add(functionName, arg0, arg1);
-      case "SUB" -> new Sub(functionName, arg0, arg1);
-      case "MUL" -> new Mul(functionName, arg0, arg1);
-      case "DIV" -> new Div(functionName, arg0, arg1);
+    BinaryFunction func;
+    switch (functionName) {
+      case "ADD" -> func = new Add(functionName, arg0, arg1);
+      case "SUB" -> func = new Sub(functionName, arg0, arg1);
+      case "MUL" -> func = new Mul(functionName, arg0, arg1);
+      case "DIV" -> func = new Div(functionName, arg0, arg1);
       default -> throw new UnrecognizedEntryException("Função inválida:"+ functionName);
     };
+    if (arg0.toString().contains(";")  && arg0.toString().charAt(0) != '\'') {
+      ((Reference) arg0).getCell().addObserver(func);
+    }
+    if (arg1.toString().contains(";")  && arg1.toString().charAt(0) != '\'') {
+      ((Reference) arg1).getCell().addObserver(func);
+    }
+    return func;
+    
   }
 
   private Content parseArgumentExpression(String argExpression) throws UnrecognizedEntryException {
@@ -128,16 +138,23 @@ public class Parser {
       return parseLiteral(argExpression);
   }
 
-  private Content parseIntervalFunction(String functionName, String rangeDescription)
+  private IntervalFunction parseIntervalFunction(String functionName, String rangeDescription)
     throws UnrecognizedEntryException, InvalidRangeException {
     Range range = _spreadsheet.createRange(rangeDescription);
-    return switch (functionName) {
-      case "CONCAT" -> new Concat(functionName, range);
-      case "COASLECE" -> new Coalesce(functionName, range);
-      case "PRODUCT" -> new Product(functionName, range);
-      case "AVERAGE" -> new Average(functionName, range);
+    IntervalFunction func;
+    List<Cell> cells = range.getCells();
+    switch (functionName) {
+      case "CONCAT" -> func = new Concat(functionName, range);
+      case "COASLECE" -> func = new Coalesce(functionName, range);
+      case "PRODUCT" -> func = new Product(functionName, range);
+      case "AVERAGE" -> func = new Average(functionName, range);
       default -> throw new UnrecognizedEntryException(rangeDescription);
     };
+    for (Cell c: cells) {
+      c.addObserver(func);
+    }
+    return func;
+    
   }
   
 }

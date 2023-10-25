@@ -35,6 +35,10 @@ public class Reference extends Content {
         return _spreadsheet.getCell(_row, _column).value();
     }
 
+    public Cell getCell(){
+        return _spreadsheet.getCell(_row, _column);
+    }
+
     public Content copy(){
         return new Reference(_row, _column, _spreadsheet);
     }
