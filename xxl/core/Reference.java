@@ -21,26 +21,17 @@ public class Reference extends Content {
     }
 
     /**
-     * @throws UnsupportedArgument
      * @returns the value of the referenced cell as a String.
      */
     @Override
-    public String toString(){
-        String value = null;
-        try{
-            value = "" + value();  
-        } catch(UnsupportedArgument e){
-            value = "#VALUE";
-        }
-        
-        return value + "=" + _row + ";" + _column;   
+    public String toString(){        
+        return "" + value() + "=" + _row + ";" + _column;   
     }
 
     /**
-     * @throws UnsupportedArgument
      * @returns the value of the reference cell
      */
-    Literal value() throws UnsupportedArgument{
+    Literal value(){
         return _spreadsheet.getCell(_row, _column).value();
     }
 

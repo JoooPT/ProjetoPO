@@ -10,16 +10,19 @@ public class Coalesce extends IntervalFunction{
         super(name,range);
     }
 
-    protected Literal compute(){
+    protected void compute(){
         List<Cell> list = getRange().getCells();
-        String res;
+        String res = "";
         for (Cell c: list) {
             try {
                 res = c.value().asString();
-                return new LiteralString(res);
-            } catch(UnsupportedArgument e){}
+                super.setValue(new LiteralString(res));
+                return;
+            } catch(UnsupportedArgument e){
+                res = "";
+            }
         }
-        return new LiteralString("");
+        super.setValue(new LiteralString(res));
     }
 
     public Content copy(){

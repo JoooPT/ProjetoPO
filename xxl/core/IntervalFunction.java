@@ -8,18 +8,12 @@ public abstract class IntervalFunction extends Function {
     public IntervalFunction(String name, Range range){
         super(name);
         _range = range;
+        update();
     }
 
     @Override
     public String toString(){
-        String value = null;
-        try{
-            value = "" + super.value();  
-        } catch(UnsupportedArgument e){
-            value = "#VALUE";
-        }
-
-        return "" + value + "=" + super.getName() + "(" + _range + ")";
+        return "" + super.value() + "=" + super.getName() + "(" + _range + ")";
     }
 
     public Range getRange(){

@@ -7,7 +7,7 @@ import xxl.core.exception.UnsupportedArgument;
 public abstract class Content implements Serializable{
     
     public abstract String toString();
-    abstract Literal value() throws UnsupportedArgument;
+    abstract Literal value();
     public String asString() throws UnsupportedArgument {
         return value().asString();
     }

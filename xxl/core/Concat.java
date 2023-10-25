@@ -10,18 +10,20 @@ public class Concat extends IntervalFunction {
         super(name,range);
     }
 
-    protected Literal compute(){
+    protected void compute(){
         List<Cell> list = getRange().getCells();
-        String res = "";
+        String res = "'";
         String str;
         for (Cell c: list) {
             try {
                 str = c.value().asString();
                 str = str.substring(1);
                 res += str;
-            } catch(UnsupportedArgument e){}
+            } catch(UnsupportedArgument e){
+                str = "";
+            }
         }
-        return new LiteralString(res);
+        setValue(new LiteralString(res));
     }
 
     public Content copy(){

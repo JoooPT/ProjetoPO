@@ -1,0 +1,47 @@
+*** tests/A-041-041-M-ok.out	2023-10-19 17:08:13.276376000 +0100
+--- tests/A-041-041-M-ok.outhyp	2023-10-25 18:02:09.577970147 +0100
+***************
+*** 14,20 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Insira o conteúdo da célula: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 14,20 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+***************
+*** 23,28 ****
+--- 23,30 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
++ Escolha uma opção: Número inválido!
++ Escolha uma opção: Número inválido!
+  Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 1;1|5
+  Menu de Edição
+  1 - Visualizar
+***************
+*** 43,49 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;1|5=1;1
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+--- 45,51 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;1|25
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir

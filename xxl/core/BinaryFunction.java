@@ -15,13 +15,8 @@ public abstract class BinaryFunction extends Function {
 
     @Override
     public String toString(){
-        String value = null;
-        try{
-            value = "" + super.value();  
-        } catch(UnsupportedArgument e){
-            value = "#VALUE";
-        }
-        String name = "=" + super.getName();
+        String value = "" + value();
+        String name = "=" + getName();
         String arg1 = "" + _arg1;
         String arg2 = "" + _arg2;
         if(arg1.contains("=")){

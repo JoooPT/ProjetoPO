@@ -1,0 +1,49 @@
+*** tests/A-056-056-M-ok.out	2023-10-19 17:08:13.285899000 +0100
+--- tests/A-056-056-M-ok.outhyp	2023-10-25 18:02:10.261961552 +0100
+***************
+*** 14,21 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Copiar: Operação inválida: A gama '1;35:23;25' é inválida.
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 14,20 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+***************
+*** 24,31 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Copiar: Operação inválida: A gama '1;1:55;1' é inválida.
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 23,30 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Número inválido!
+! Escolha uma opção: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+***************
+*** 34,39 ****
+--- 33,39 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
++ Escolha uma opção: Número inválido!
+  Escolha uma opção: Menu Principal
+  1 - Novo
+  2 - Abrir

@@ -4,6 +4,7 @@ import xxl.core.exception.UnsupportedArgument;
 
 public abstract class Function extends Content {
     private String _name;
+    private Literal _value;
 
     /**
      * Constructor
@@ -34,13 +35,23 @@ public abstract class Function extends Content {
         return value().asInt();
     }
 
-    protected abstract Literal compute() throws UnsupportedArgument;
+    protected abstract void compute();
+    
+    public void update(){
+        compute();
+    }
 
     /**
      * @returns the result of the function as a literal.
-     * @throws UnsupportedArgument
      */
-    public Literal value() throws UnsupportedArgument{
-        return compute();
+    public Literal value(){
+        if(_value == null){
+            update();
+        }
+        return _value;
+    }
+
+    public void setValue(Literal value){
+        _value = value;
     }
 }

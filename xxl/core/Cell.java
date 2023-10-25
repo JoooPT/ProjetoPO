@@ -63,7 +63,7 @@ public class Cell implements Serializable{
      * 
      * @returns the content of the cell as a literal
      */
-    Literal value() throws UnsupportedArgument {
+    Literal value(){
         return _content.value();
     }
 }

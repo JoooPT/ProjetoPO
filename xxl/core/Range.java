@@ -21,6 +21,14 @@ public class Range {
         _spreadsheet = spreadsheet;
     }
 
+    public int getBeginColumn() {
+        return _beginColumn;
+    }
+
+    public int getBeginRow() {
+        return _beginRow;
+    }
+
     /**
      * 
      * @returns an umnodifiable list with the cells in the range.

@@ -10,18 +10,19 @@ public class Average extends IntervalFunction{
         super(name,range);
     }
 
-    protected Literal compute(){
+    protected void compute(){
         List<Cell> list = getRange().getCells();
         int res = 0;
-        for (Cell c: list) {
-            try {
+        Literal result;
+        try {
+            for (Cell c: list) { 
                 res += c.value().asInt();
             }
-            catch(UnsupportedArgument e){
-                return new LiteralString("#VALUE");
-            }
+            result = new LiteralInteger(res % list.size());
+        }catch(UnsupportedArgument e){
+            result = LiteralInvalid.getLiteralInvalid();
         }
-        return new LiteralInteger(res % list.size());
+        super.setValue(result);
     }
 
     public Content copy(){

@@ -11,11 +11,16 @@ public class Add extends BinaryFunction {
 
     /**
      * @returns arg1 + arg2 as a Literal.
-     * @throws UnsupportedArgument 
      */
-    protected Literal compute() throws UnsupportedArgument {
-        int res = super.getArg1().asInt() + super.getArg2().asInt();
-        return new LiteralInteger(res);
+    protected void compute(){
+        Literal res;
+        try{
+            res = new LiteralInteger(getArg1().asInt() + getArg2().asInt());
+        }
+        catch( UnsupportedArgument e){
+            res = LiteralInvalid.getLiteralInvalid();
+        }
+        super.setValue(res);
     }
 
     public Content copy(){
