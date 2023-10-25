@@ -2,7 +2,7 @@ package xxl.core;
 
 import xxl.core.exception.UnsupportedArgument;
 
-public abstract class Function extends Content implements Observer{
+public abstract class Function extends Content implements Observer {
     private String _name;
     private Literal _value;
 

@@ -2,8 +2,6 @@ package xxl.core;
 
 import java.io.Serializable;
 
-import xxl.core.exception.UnsupportedArgument;
-
 import java.util.Set;
 import java.util.HashSet;
 
@@ -12,13 +10,14 @@ public class Cell implements Serializable{
     private int _row;
     private int _column;
     private Content _content;
-    private Set<Observer> _observers = new HashSet<>();
+    private Set<Observer> _observers;
 
     /* Constructor */
     public Cell(int row, int column) {
         _row = row;
         _column = column;
         _content = NulContent.getNulContent();
+        _observers = new HashSet<>();
     }
     public Cell(int row, int column, Content content) {
         _row = row;
@@ -56,6 +55,7 @@ public class Cell implements Serializable{
      * @param content that is inserted in the cell
      */
     void setContent(Content content) {
+        notifyObservers();
         _content = content;
     }
 
@@ -81,6 +81,11 @@ public class Cell implements Serializable{
 
     private void notifyObservers() {
         for (Observer obs : _observers)
+        if(obs.isLinked()){
           obs.update();
+        }
+        else {
+            removeObserver(obs);
+        }
     }
 }

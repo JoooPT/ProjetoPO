@@ -122,8 +122,8 @@ public class Parser {
     if (arg0.toString().contains(";")  && arg0.toString().charAt(0) != '\'') {
       ((Reference) arg0).getCell().addObserver(func);
     }
-    if (arg1.toString().contains(";")  && arg1.toString().charAt(0) != '\'') {
-      ((Reference) arg1).getCell().addObserver(func);
+    if (arg0.toString().contains(";")  && arg0.toString().charAt(0) != '\'') {
+      ((Reference) arg0).getCell().addObserver(func);
     }
     return func;
     
@@ -145,7 +145,7 @@ public class Parser {
     List<Cell> cells = range.getCells();
     switch (functionName) {
       case "CONCAT" -> func = new Concat(functionName, range);
-      case "COALESCE" -> func = new Coalesce(functionName, range);
+      case "COASLECE" -> func = new Coalesce(functionName, range);
       case "PRODUCT" -> func = new Product(functionName, range);
       case "AVERAGE" -> func = new Average(functionName, range);
       default -> throw new UnrecognizedEntryException(rangeDescription);

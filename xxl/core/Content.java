@@ -5,6 +5,7 @@ import java.io.Serializable;
 import xxl.core.exception.UnsupportedArgument;
 
 public abstract class Content implements Serializable{
+    private boolean _linkedContent = true;
     
     public abstract String toString();
     abstract Literal value();
@@ -15,6 +16,14 @@ public abstract class Content implements Serializable{
         return value().asInt();
     }
     public abstract Content copy();
+
+    public boolean isLinked(){
+        return _linkedContent;
+    }
+
+    public void setLinked(boolean flag){
+        _linkedContent = flag;
+    }
 
 
 }
