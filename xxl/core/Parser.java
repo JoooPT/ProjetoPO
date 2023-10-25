@@ -145,7 +145,7 @@ public class Parser {
     List<Cell> cells = range.getCells();
     switch (functionName) {
       case "CONCAT" -> func = new Concat(functionName, range);
-      case "COASLECE" -> func = new Coalesce(functionName, range);
+      case "COALESCE" -> func = new Coalesce(functionName, range);
       case "PRODUCT" -> func = new Product(functionName, range);
       case "AVERAGE" -> func = new Average(functionName, range);
       default -> throw new UnrecognizedEntryException(rangeDescription);
