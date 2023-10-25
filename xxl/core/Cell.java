@@ -16,6 +16,11 @@ public class Cell implements Serializable{
         _column = column;
         _content = NulContent.getNulContent();
     }
+    public Cell(int row, int column, Content content) {
+        _row = row;
+        _column = column;
+        _content = content;
+    }
 
     /**
      * 

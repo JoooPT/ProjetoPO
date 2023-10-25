@@ -91,7 +91,7 @@ public class Spreadsheet implements Serializable {
    * @returns the cells in the cut buffer as a list.
    */
   public List<Cell> getCutBuffer() {
-    return _cutBuffer.getCells();
+    return _cutBuffer.getBuffer();
   }
 
   /**
@@ -134,7 +134,7 @@ public class Spreadsheet implements Serializable {
    */
   public void copy(String range) throws InvalidRangeException {
     Range rangeObj = createRange(range);
-    _cutBuffer.setBuffer(rangeObj.getCells());
+    _cutBuffer.setBuffer(rangeObj.getCells(), rangeObj.getBeginRow(), rangeObj.getBeginColumn());
   }
 
   /**
