@@ -63,6 +63,10 @@ public class Cell implements Serializable{
         return _content.copy();
     }
 
+    public Content getContent() {
+        return _content;
+    }
+
     /**
      * 
      * @returns the content of the cell as a literal

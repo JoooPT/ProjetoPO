@@ -147,7 +147,8 @@ public class Spreadsheet implements Serializable {
     Range rangeObj = createRange(range);
     List<Cell> list = rangeObj.getCells();
     for (Cell c: list) {
-      c.setContent(NulContent.getNulContent());
+      c.getContent().setLinked(false);
+      _cells.removeCell(c);
     }
     setChangedStatus(true);
   }
@@ -170,6 +171,7 @@ public class Spreadsheet implements Serializable {
    */
   public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException {
     Cell cell = getCell(row, column);
+    cell.getContent().setLinked(false);
     cell.setContent(content);
     _cells.addCell(cell);
     setChangedStatus(true);

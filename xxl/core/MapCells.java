@@ -34,6 +34,15 @@ public class MapCells extends CellStructure {
         else return false;
     }
 
+    boolean removeCell(Cell cell){
+        String key = key(cell.getRow(), cell.getCol());
+        if(_cells.containsKey(key)){
+            _cells.remove(key,cell);
+            return true;
+        }
+        else return false;
+    }
+
     /**
      * 
      * @param row
