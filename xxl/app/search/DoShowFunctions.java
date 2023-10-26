@@ -1,8 +1,10 @@
 package xxl.app.search;
 
+import java.util.List;
+
 import pt.tecnico.uilib.menus.Command;
+import xxl.core.Cell;
 import xxl.core.Spreadsheet;
-// FIXME import classes
 
 /**
  * Command for searching function names.
@@ -11,11 +13,14 @@ class DoShowFunctions extends Command<Spreadsheet> {
 
   DoShowFunctions(Spreadsheet receiver) {
     super(Label.SEARCH_FUNCTIONS, receiver);
-    // FIXME add fields
+    addStringField("input", Message.searchFunction());
   }
 
   @Override
   protected final void execute() {
-    // FIXME implement command
+    List <Cell> cells = _receiver.searchFunction(stringField("input"));
+    for (Cell c: cells) {
+      _display.addNewLine(c.value().toString(), false);
+    }
   }
 }
