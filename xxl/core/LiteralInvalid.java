@@ -9,6 +9,10 @@ public class LiteralInvalid extends Literal {
         return _literalInvalid;
     } 
 
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
     @Override
     public String toString(){
         return "#VALUE";

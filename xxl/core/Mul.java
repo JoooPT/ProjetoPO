@@ -9,6 +9,10 @@ public class Mul extends BinaryFunction {
         super(name,arg1,arg2);
     }
 
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
     /**
      * @returns arg1 * arg2 as a Literal.
      */

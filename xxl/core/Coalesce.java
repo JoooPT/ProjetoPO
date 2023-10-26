@@ -6,6 +6,10 @@ import xxl.core.exception.UnsupportedArgument;
 
 public class Coalesce extends IntervalFunction{
     
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+    
     public Coalesce(String name, Range range){
         super(name,range);
     }

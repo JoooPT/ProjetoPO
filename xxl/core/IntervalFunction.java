@@ -1,7 +1,5 @@
 package xxl.core;
 
-import xxl.core.exception.UnsupportedArgument;
-
 public abstract class IntervalFunction extends Function {
     private Range _range;
     
@@ -9,6 +7,10 @@ public abstract class IntervalFunction extends Function {
         super(name);
         _range = range;
         update();
+    }
+
+    public void accept(Visitor v) {
+        v.visit(this);
     }
 
     @Override

@@ -1,13 +1,15 @@
 package xxl.core;
 
-import xxl.core.exception.UnsupportedArgument;
-
 public class NulContent extends Content {
     private static NulContent _nulContent = new NulContent();
     private NulContent() {};
     public static NulContent getNulContent() {
         return _nulContent;
     } 
+
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
 
     @Override
     public String toString(){

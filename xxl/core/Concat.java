@@ -10,6 +10,10 @@ public class Concat extends IntervalFunction {
         super(name,range);
     }
 
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
     protected void compute(){
         List<Cell> list = getRange().getCells();
         String res = "'";

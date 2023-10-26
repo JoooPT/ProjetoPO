@@ -1,7 +1,5 @@
 package xxl.core;
 
-import xxl.core.exception.UnsupportedArgument;
-
 public class Reference extends Content {
     private int _row;
     private int  _column;
@@ -18,6 +16,10 @@ public class Reference extends Content {
         _row = row;
         _column = column;
         _spreadsheet = spreadsheet;
+    }
+
+    public void accept(Visitor v) {
+        v.visit(this);
     }
 
     /**

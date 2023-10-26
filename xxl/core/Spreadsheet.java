@@ -10,9 +10,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import xxl.core.exception.InvalidRangeException;
-import xxl.core.exception.NoNameException;
-import xxl.core.exception.UnrecognizedEntryException;
-
 /**
  * Class representing a spreadsheet.
  */
@@ -193,16 +190,14 @@ public class Spreadsheet implements Serializable {
     return cells;
   }
 
-  public List<Cell> searchFunction(String value) {
+  public List<Cell> searchFunction(String name) {
     List<Cell> cells = _cells.getCells();
     Iterator<Cell> iter = cells.iterator();
+    SearchFunction visitor = new SearchFunction(name);
     while (iter.hasNext()) {
-      try {
-        if (!iter.next().getContent().getName().contains(value))
-          iter.remove();
-      } catch (NoNameException e) {
-          iter.remove();
-      }
+      iter.next().getContent().accept(visitor);
+      if (!visitor.wasFound()) iter.remove();
+      visitor.reset();
     }
     CellComparator comparator = new FunctionComparator();
     cells.sort(comparator);

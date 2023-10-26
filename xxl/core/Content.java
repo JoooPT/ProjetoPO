@@ -8,6 +8,10 @@ import xxl.core.exception.UnsupportedArgument;
 public abstract class Content implements Serializable{
     private boolean _linkedContent = true;
 
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
     public abstract String toString();
     
     abstract Literal value();

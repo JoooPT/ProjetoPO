@@ -14,6 +14,10 @@ public abstract class Function extends Content implements Observer {
         _name = name;
     }
     
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+
     /**
      * @returns the name of the function.
      */

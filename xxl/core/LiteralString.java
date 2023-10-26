@@ -13,6 +13,10 @@ public class LiteralString extends Literal {
         _value = value;
     }
 
+    public void accept(Visitor v) {
+        v.visit(this);
+    }
+    
     @Override
     public String toString(){
         return _value;

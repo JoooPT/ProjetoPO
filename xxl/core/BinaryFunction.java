@@ -1,7 +1,5 @@
 package xxl.core;
 
-import xxl.core.exception.UnsupportedArgument;
-
 public abstract class BinaryFunction extends Function {
     private Content _arg1;
     private Content _arg2;
@@ -11,6 +9,10 @@ public abstract class BinaryFunction extends Function {
         super(name);
         _arg1 = arg1;
         _arg2 = arg2;
+    }
+
+    public void accept(Visitor v) {
+        v.visit(this);
     }
 
     @Override
