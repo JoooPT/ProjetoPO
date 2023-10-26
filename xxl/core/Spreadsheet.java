@@ -159,10 +159,23 @@ public class Spreadsheet implements Serializable {
     Range rangeObj = createRange(range);
     List<Cell> cells = rangeObj.getCells();
     List<Cell> buffer = getCutBuffer();
-    int size = list.size();
+    int size = cells.size();
 
-    if(size = 1){
-      int row = cells[0];
+    if(size == 1){
+      for(Cell cell: buffer){
+        int rowPaste = cell.getRow() + cells.get(0).getRow();
+        int colPaste = cell.getCol() + cells.get(0).getCol();
+        if(rowPaste>_rows || colPaste > _columns){
+          break;
+        }
+          insertContent(cell.getRow() + cells.get(0).getRow(), cell.getCol() + cells.get(0).getCol(), cell.getContent());
+        }
+    }
+    else if(size == buffer.size()){
+      for(int i = 0; i<size; i++){
+        cells.get(i).setContent(buffer.get(i).getContent());
+        _cells.addCell(cells.get(i));
+      }
     }
     setChangedStatus(true);
   }
@@ -210,9 +223,8 @@ public class Spreadsheet implements Serializable {
    * @param row of the cell to change. 
    * @param column of the cell to change
    * @param contentSpecification in a string format to put in the specified cell.
-   * @throws UnrecognizedEntryException
    */
-  public void insertContent(int row, int column, Content content) throws UnrecognizedEntryException {
+  public void insertContent(int row, int column, Content content) {
     Cell cell = getCell(row, column);
     cell.getContent().setLinked(false);
     cell.setContent(content);
@@ -224,6 +236,6 @@ public class Spreadsheet implements Serializable {
      * @returns the correct represention of each cell on the cut buffer
      */
     public String visualizeCellBuffer(Cell cell){
-      return "" + (cell.getRow() + 1) + ";" + (cell.getCol() + 1) + "|" + cell.getCopyContent().toString();
+      return "" + (cell.getRow() + 1) + ";" + (cell.getCol() + 1) + "|" + cell.getContent().toString();
   }
 }
