@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.HashSet;
 
-public class Cell implements Serializable{
+public class Cell implements Serializable {
     
     private int _row;
     private int _column;
@@ -71,7 +71,7 @@ public class Cell implements Serializable{
      * 
      * @returns the content of the cell as a literal
      */
-    Literal value(){
+    public Literal value(){
         return _content.value();
     }
 
@@ -92,4 +92,5 @@ public class Cell implements Serializable{
             removeObserver(obs);
         }
     }
+
 }
