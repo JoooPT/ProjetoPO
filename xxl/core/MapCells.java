@@ -1,7 +1,9 @@
 package xxl.core;
 
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MapCells extends CellStructure {
     private Map<String,Cell> _cells;
@@ -19,6 +21,17 @@ public class MapCells extends CellStructure {
     Cell getCell(int row, int column) {
         if (_cells.containsKey(key(row,column))) return _cells.get(key(row,column));
         else return new Cell(row, column);
+    }
+
+    /**
+     * @returns a list of cells existing in the cell structure.
+     */
+    List<Cell> getCells() {
+        List<Cell> cells = new ArrayList<Cell>();
+        for(Map.Entry<String,Cell> entry: _cells.entrySet()){
+            cells.add(entry.getValue());
+        }
+        return cells;
     }
 
     /**

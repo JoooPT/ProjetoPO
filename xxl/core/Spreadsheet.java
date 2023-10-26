@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import xxl.core.exception.InvalidRangeException;
 import xxl.core.exception.UnrecognizedEntryException;
@@ -153,13 +154,28 @@ public class Spreadsheet implements Serializable {
     setChangedStatus(true);
   }
 
+  public List<Cell> searchValue(String value) {
+    List<Cell> cells = _cells.getCells();
+    Iterator<Cell> iter = cells.iterator();
+    while (iter.hasNext()) {
+      if (!value.equals(iter.next().value().toString())) {
+        iter.remove();
+      }
+    }
+    CellComparator comparator = new CellComparator();
+    cells.sort(comparator);
+    return cells;
+  }
+
+
+
   /**
    * 
    * @param user
    */
   public void addUser(User user) {
     _users.add(user);
-  }
+  } 
 
   /**
    * Insert specified content in specified address.

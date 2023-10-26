@@ -19,7 +19,7 @@ public class App {
       if (datafile != null) {
         try {
           receiver.importFile(datafile);
-        } catch (IOException |ImportFileException e) {
+        } catch (IOException | ImportFileException e) {
           // no behavior described: just present the problem
           e.printStackTrace();
         } catch (InvalidRangeException e) {
