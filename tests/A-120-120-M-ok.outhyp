@@ -1,13 +1,18 @@
 Menu Principal
 1 - Novo
 2 - Abrir
+3 - Guardar
+4 - Menu de Edição
+5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: Opção inválida!
+Escolha uma opção: Ficheiro sem nome. Guardar ficheiro como: Guardar: Operação inválida: Problema ao abrir ficheiro: xxl.core.Range
 Menu Principal
 1 - Novo
 2 - Abrir
+3 - Guardar
+4 - Menu de Edição
+5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: Número inválido!
 Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
 1 - Novo
 2 - Abrir
@@ -50,7 +55,7 @@ Escolha uma opção: Menu Principal
 4 - Menu de Edição
 5 - Menu de Consultas
 0 - Sair
-Escolha uma opção: Guardar antes de fechar? Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: saved30 (No such file or directory)
+Escolha uma opção: Guardar antes de fechar? Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: writing aborted; java.io.NotSerializableException: xxl.core.Range
 Menu Principal
 1 - Novo
 2 - Abrir

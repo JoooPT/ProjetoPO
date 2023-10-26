@@ -1,38 +1,23 @@
 *** tests/A-120-120-M-ok.out	2023-10-19 23:51:59.205571323 +0100
---- tests/A-120-120-M-ok.outhyp	2023-10-26 04:30:18.577116970 +0100
+--- tests/A-120-120-M-ok.outhyp	2023-10-26 04:45:35.260760853 +0100
 ***************
-*** 1,17 ****
-  Menu Principal
-  1 - Novo
-  2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
+*** 5,11 ****
+  4 - Menu de Edição
+  5 - Menu de Consultas
   0 - Sair
 ! Escolha uma opção: Ficheiro sem nome. Guardar ficheiro como: Menu Principal
   1 - Novo
   2 - Abrir
-- 3 - Guardar
-- 4 - Menu de Edição
-- 5 - Menu de Consultas
+  3 - Guardar
+--- 5,12 ----
+  4 - Menu de Edição
+  5 - Menu de Consultas
   0 - Sair
-  Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
-  1 - Novo
-  2 - Abrir
---- 1,13 ----
-  Menu Principal
-  1 - Novo
-  2 - Abrir
-  0 - Sair
-! Escolha uma opção: Opção inválida!
+! Escolha uma opção: Ficheiro sem nome. Guardar ficheiro como: Guardar: Operação inválida: Problema ao abrir ficheiro: xxl.core.Range
 ! Menu Principal
   1 - Novo
   2 - Abrir
-  0 - Sair
-+ Escolha uma opção: Número inválido!
-  Escolha uma opção: Especifique o número de linhas da folha: Especifique o número de colunas da folha: Menu Principal
-  1 - Novo
-  2 - Abrir
+  3 - Guardar
 ***************
 *** 54,60 ****
   4 - Menu de Edição
@@ -42,11 +27,11 @@
   1 - Novo
   2 - Abrir
   3 - Guardar
---- 50,57 ----
+--- 55,62 ----
   4 - Menu de Edição
   5 - Menu de Consultas
   0 - Sair
-! Escolha uma opção: Guardar antes de fechar? Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: saved30 (No such file or directory)
+! Escolha uma opção: Guardar antes de fechar? Ficheiro a abrir: Abrir: Operação inválida: Problema ao abrir ficheiro: writing aborted; java.io.NotSerializableException: xxl.core.Range
 ! Menu Principal
   1 - Novo
   2 - Abrir
@@ -60,7 +45,7 @@
   Menu de Edição
   1 - Visualizar
   2 - Inserir
---- 67,73 ----
+--- 72,78 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
@@ -77,7 +62,7 @@
   Menu de Edição
   1 - Visualizar
   2 - Inserir
---- 77,83 ----
+--- 82,88 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
