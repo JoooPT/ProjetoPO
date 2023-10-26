@@ -2,6 +2,7 @@ package xxl.core;
 
 import java.io.Serializable;
 
+import xxl.core.exception.NoNameException;
 import xxl.core.exception.UnsupportedArgument;
 
 public abstract class Content implements Serializable{
@@ -23,6 +24,10 @@ public abstract class Content implements Serializable{
 
     public boolean isLinked(){
         return _linkedContent;
+    }
+
+    public String getName() throws NoNameException {
+        throw new NoNameException();
     }
 
     public void setLinked(boolean flag){

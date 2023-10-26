@@ -13,7 +13,7 @@ public abstract class Function extends Content implements Observer {
     public Function(String name){
         _name = name;
     }
-
+    
     /**
      * @returns the name of the function.
      */
