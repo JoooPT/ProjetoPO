@@ -18,7 +18,7 @@ public class Average extends IntervalFunction{
             for (Cell c: list) { 
                 res += c.value().asInt();
             }
-            result = new LiteralInteger(res % list.size());
+            result = new LiteralInteger(res / list.size());
         }catch(UnsupportedArgument e){
             result = LiteralInvalid.getLiteralInvalid();
         }

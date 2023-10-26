@@ -16,7 +16,7 @@ public class Parser {
   Parser() {
   }
 
-  Parser(Spreadsheet spreadsheet) {
+  public Parser(Spreadsheet spreadsheet) {
     _spreadsheet = spreadsheet;
   }
 
@@ -53,7 +53,7 @@ public class Parser {
     _spreadsheet = new Spreadsheet(rows, columns);
   }
 
-  public void parseLine(String line) throws UnrecognizedEntryException, InvalidRangeException  {
+  private void parseLine(String line) throws UnrecognizedEntryException, InvalidRangeException  {
     String[] components = line.split("\\|");
 
     if (components.length == 1) // do nothing
@@ -68,7 +68,7 @@ public class Parser {
   }
 
   // parse the begining of an expression
-  Content parseContent(String contentSpecification)throws UnrecognizedEntryException, InvalidRangeException  {
+  public Content parseContent(String contentSpecification)throws UnrecognizedEntryException, InvalidRangeException  {
     char c = contentSpecification.charAt(0);
 
     if (c == '=')

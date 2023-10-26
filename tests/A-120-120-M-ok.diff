@@ -1,5 +1,5 @@
 *** tests/A-120-120-M-ok.out	2023-10-19 17:17:27.102226000 +0100
---- tests/A-120-120-M-ok.outhyp	2023-10-25 18:02:12.009939626 +0100
+--- tests/A-120-120-M-ok.outhyp	2023-10-26 03:47:36.840370184 +0100
 ***************
 *** 1,17 ****
   Menu Principal
@@ -34,50 +34,6 @@
   1 - Novo
   2 - Abrir
 ***************
-*** 28,34 ****
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Insira o conteúdo da célula: Menu de Edição
-  1 - Visualizar
-  2 - Inserir
-  3 - Copiar
---- 24,40 ----
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Menu de Edição
-! 1 - Visualizar
-! 2 - Inserir
-! 3 - Copiar
-! 4 - Apagar
-! 5 - Cortar
-! 6 - Colar
-! 7 - Mostrar 'cut buffer'
-! 0 - Sair
-! Escolha uma opção: Número inválido!
-! Escolha uma opção: Menu de Edição
-  1 - Visualizar
-  2 - Inserir
-  3 - Copiar
-***************
-*** 37,43 ****
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;3|5
-  Menu de Edição
-  1 - Visualizar
-  2 - Inserir
---- 43,49 ----
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;3|
-  Menu de Edição
-  1 - Visualizar
-  2 - Inserir
-***************
 *** 54,60 ****
   4 - Menu de Edição
   5 - Menu de Consultas
@@ -86,7 +42,7 @@
   1 - Novo
   2 - Abrir
   3 - Guardar
---- 60,67 ----
+--- 50,57 ----
   4 - Menu de Edição
   5 - Menu de Consultas
   0 - Sair
@@ -104,11 +60,11 @@
   Menu de Edição
   1 - Visualizar
   2 - Inserir
---- 77,83 ----
+--- 67,73 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
-! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;3|
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 2;3|5
   Menu de Edição
   1 - Visualizar
   2 - Inserir
@@ -121,7 +77,7 @@
   Menu de Edição
   1 - Visualizar
   2 - Inserir
---- 87,93 ----
+--- 77,83 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair

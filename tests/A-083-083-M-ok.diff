@@ -1,22 +1,5 @@
 *** tests/A-083-083-M-ok.out	2023-10-19 17:08:13.294219000 +0100
---- tests/A-083-083-M-ok.outhyp	2023-10-25 18:02:11.421946997 +0100
-***************
-*** 14,20 ****
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
-  1 - Visualizar
-  2 - Inserir
-  3 - Copiar
---- 14,20 ----
-  6 - Colar
-  7 - Mostrar 'cut buffer'
-  0 - Sair
-! Escolha uma opção: Menu de Edição
-  1 - Visualizar
-  2 - Inserir
-  3 - Copiar
+--- tests/A-083-083-M-ok.outhyp	2023-10-26 03:47:36.252375019 +0100
 ***************
 *** 23,29 ****
   6 - Colar
@@ -26,11 +9,10 @@
   1 - Visualizar
   2 - Inserir
   3 - Copiar
---- 23,30 ----
+--- 23,29 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
-! Escolha uma opção: Número inválido!
 ! Escolha uma opção: Menu de Edição
   1 - Visualizar
   2 - Inserir
@@ -46,7 +28,7 @@
   Menu de Edição
   1 - Visualizar
   2 - Inserir
---- 33,42 ----
+--- 32,41 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
@@ -69,7 +51,7 @@
   1 - Visualizar
   2 - Inserir
   3 - Copiar
---- 46,52 ----
+--- 45,51 ----
   6 - Colar
   7 - Mostrar 'cut buffer'
   0 - Sair
