@@ -15,7 +15,7 @@ public class Coalesce extends IntervalFunction{
         String res = "";
         for (Cell c: list) {
             try {
-                res = c.value().asString();
+                res += "\'" + c.value().asString();
                 super.setValue(new LiteralString(res));
                 return;
             } catch(UnsupportedArgument e){
