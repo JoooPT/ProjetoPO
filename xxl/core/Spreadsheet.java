@@ -155,6 +155,18 @@ public class Spreadsheet implements Serializable {
     setChangedStatus(true);
   }
 
+  public void paste(String range) throws InvalidRangeException{
+    Range rangeObj = createRange(range);
+    List<Cell> cells = rangeObj.getCells();
+    List<Cell> buffer = getCutBuffer();
+    int size = list.size();
+
+    if(size = 1){
+      int row = cells[0];
+    }
+    setChangedStatus(true);
+  }
+
   public List<Cell> searchValue(String value) {
     List<Cell> cells = _cells.getCells();
     Iterator<Cell> iter = cells.iterator();
