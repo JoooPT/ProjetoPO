@@ -20,7 +20,7 @@ class DoShowValues extends Command<Spreadsheet> {
   protected final void execute() {
     List <Cell> cells = _receiver.searchValue(stringField("input"));
     for (Cell c: cells) {
-      _display.addNewLine(c.value().toString(), false);
+      _display.addNewLine(c.toString(), false);
     }
   }
 }
