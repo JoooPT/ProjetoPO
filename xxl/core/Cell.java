@@ -84,13 +84,13 @@ public class Cell implements Serializable {
     }
 
     private void notifyObservers() {
-        for (Observer obs : _observers)
-        if(obs.isLinked()){
-          obs.update();
-        }
-        else {
-            removeObserver(obs);
+        for (Observer obs : _observers){
+            if(obs.isLinked()){
+            obs.update();
+            }
+            else {
+                removeObserver(obs);
+            }
         }
     }
-
 }
