@@ -1,7 +1,10 @@
 package xxl.app.edit;
 
+import java.util.List;
+
 import pt.tecnico.uilib.menus.Command;
 import xxl.core.Spreadsheet;
+import xxl.core.Cell;
 // FIXME import classes
 
 /**
@@ -15,6 +18,9 @@ class DoShowCutBuffer extends Command<Spreadsheet> {
   
   @Override
   protected final void execute() {
-    // FIXME implement command
+    List<Cell> buffer =_receiver.getCutBuffer();
+    for(Cell c: buffer){
+      _display.addNewLine(_receiver.visualizeCellBuffer(c), false);
+    }
   }
 }

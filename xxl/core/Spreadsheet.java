@@ -207,4 +207,11 @@ public class Spreadsheet implements Serializable {
     _cells.addCell(cell);
     setChangedStatus(true);
   }
+
+  /**
+     * @returns the correct represention of each cell on the cut buffer
+     */
+    public String visualizeCellBuffer(Cell cell){
+      return "" + (cell.getRow() + 1) + ";" + (cell.getCol() + 1) + "|" + cell.getCopyContent().toString();
+  }
 }

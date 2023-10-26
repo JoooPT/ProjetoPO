@@ -26,11 +26,5 @@ public class CutBuffer implements Serializable{
             _buffer.add(new Cell(c.getRow()- rowBegin,c.getCol() - columnBegin, c.getCopyContent()));
         }
     }
-    /**
-     * @returns the correct represention of each cell on the cut buffer
-     */
-    public String visualizeCellBuffer(Cell cell){
-        return "" + (cell.getRow() + 1) + ";" + (cell.getCol() + 1) + "|" + cell.getCopyContent().toString();
-    }
 
 }
