@@ -167,8 +167,6 @@ public class Spreadsheet implements Serializable {
     return cells;
   }
 
-
-
   /**
    * 
    * @param user
