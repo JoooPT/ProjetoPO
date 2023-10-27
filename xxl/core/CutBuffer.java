@@ -18,6 +18,10 @@ public class CutBuffer implements Serializable{
         return _buffer;
     }
 
+    public void clearBuffer() {
+        _buffer.clear();
+    }
+
     /**
      * @param cells copied to the cut buffer.
      */

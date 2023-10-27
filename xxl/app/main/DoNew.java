@@ -29,6 +29,7 @@ class DoNew extends Command<Calculator> {
         save.performCommand();
       }
     }
+    
     _receiver.createNewSpreadSheet(integerField("rows"), integerField("columns"));
   }
 

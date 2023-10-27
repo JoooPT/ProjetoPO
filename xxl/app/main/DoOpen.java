@@ -23,6 +23,7 @@ class DoOpen extends Command<Calculator> {
   protected final void execute() throws CommandException {
     
     if(_receiver.getSpreadsheet()!= null && _receiver.getSpreadsheet().changed()){
+      _receiver.getSpreadsheet().resetCutBuffer();
       if(Form.confirm(Message.saveBeforeExit())){  
         Command<Calculator> save = new DoSave(_receiver);
         save.performCommand();

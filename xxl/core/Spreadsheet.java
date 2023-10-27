@@ -233,4 +233,9 @@ public class Spreadsheet implements Serializable {
     public String visualizeCellBuffer(Cell cell){
       return "" + (cell.getRow() + 1) + ";" + (cell.getCol() + 1) + "|" + cell.getContent().toString();
   }
+
+  public void resetCutBuffer() {
+    _cutBuffer.clearBuffer();
+  }
+  
 }
