@@ -35,5 +35,5 @@ The tests provided by [Branquinho](https://github.com/tbranquinho18)
 * 43: Testa o guardar e criar uma nova spreadsheet logo a seguir(não deve pedir para guardar antes de sair)
 * 44: Testa o import de uma spreadsheet com uma célula vazia(explícita) e visualiza-a
 * 45: Testa o abrir e criar uma nova spreadsheet logo a seguir(mesmo do 43)
-* 46: Testa o abrir com FileOpenFailedException
-* 47: Testa a visualização de uma linha quando a gama é inserida ao contrário
+* 46: Testa o abrir com FileOpenFailedException (NOS USAMOS A EXECEPTION CERTA)
+* 47: Testa a visualização de uma linha quando a gama é inserida ao contrário (NAO DEVE TESTAR)

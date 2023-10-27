@@ -1,0 +1,43 @@
+*** testsExtra/Francisca/teste2.out	2023-10-27 15:21:51.444307531 +0100
+--- testsExtra/Francisca/teste2.outhyp	2023-10-27 16:01:44.236190588 +0100
+***************
+*** 23,32 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: 1;1|9
+! 1;2|'6
+! 1;3|12
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 23,29 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+***************
+*** 44,52 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 5;1|9
+! 5;2|'6
+! 5;3|12
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+--- 41,49 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 5;1|
+! 5;2|
+! 5;3|
+  Menu de Edição
+  1 - Visualizar
+  2 - Inserir

@@ -19,7 +19,11 @@ public class Div extends BinaryFunction {
     protected void compute(){
         Literal res;
         try{
-            res = new LiteralInteger(super.getArg1().asInt() / super.getArg2().asInt());
+            if(super.getArg2().asInt() == 0){
+                res = LiteralInvalid.getLiteralInvalid();
+            }else{
+                res = new LiteralInteger(super.getArg1().asInt() / super.getArg2().asInt());
+            }
         }
         catch( UnsupportedArgument e){
             res = LiteralInvalid.getLiteralInvalid();

@@ -132,6 +132,7 @@ public class Spreadsheet implements Serializable {
    * @throws InvalidRangeException
    */
   public void copy(String range) throws InvalidRangeException {
+    resetCutBuffer();
     Range rangeObj = createRange(range);
     _cutBuffer.setBuffer(rangeObj.getCells(), rangeObj.getBeginRow(), rangeObj.getBeginColumn());
   }
