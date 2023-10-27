@@ -1,0 +1,22 @@
+*** testsExtra/Branquinho/test47.out	2023-10-27 15:21:51.444307531 +0100
+--- testsExtra/Branquinho/test47.outhyp	2023-10-27 15:43:12.251563319 +0100
+***************
+*** 14,23 ****
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): 3;1|10
+! 3;2|5
+! 3;3|2
+! Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
+--- 14,20 ----
+  6 - Colar
+  7 - Mostrar 'cut buffer'
+  0 - Sair
+! Escolha uma opção: Especifique a gama (startline;startcol:endline;endcol): Menu de Edição
+  1 - Visualizar
+  2 - Inserir
+  3 - Copiar
