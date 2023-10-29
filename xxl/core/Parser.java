@@ -117,13 +117,18 @@ public class Parser {
       case "SUB" -> func = new Sub(functionName, arg0, arg1);
       case "MUL" -> func = new Mul(functionName, arg0, arg1);
       case "DIV" -> func = new Div(functionName, arg0, arg1);
-      default -> throw new UnrecognizedEntryException("Função inválida:"+ functionName);
+      default -> throw new UnrecognizedEntryException(functionName);
     };
     if (arg0.toString().contains(";")  && arg0.toString().charAt(0) != '\'') {
-      ((Reference) arg0).getCell().addObserver(func);
+      Cell referenced = ((Reference) arg0).getCell();
+      referenced.addObserver(func);
+      _spreadsheet.addCell(referenced);
+      
     }
-    if (arg0.toString().contains(";")  && arg0.toString().charAt(0) != '\'') {
-      ((Reference) arg0).getCell().addObserver(func);
+    if (arg1.toString().contains(";")  && arg1.toString().charAt(0) != '\'') {
+      Cell referenced = ((Reference) arg1).getCell();
+      referenced.addObserver(func);
+      _spreadsheet.addCell(referenced);
     }
     return func;
     
@@ -148,10 +153,11 @@ public class Parser {
       case "COALESCE" -> func = new Coalesce(functionName, range);
       case "PRODUCT" -> func = new Product(functionName, range);
       case "AVERAGE" -> func = new Average(functionName, range);
-      default -> throw new UnrecognizedEntryException(rangeDescription);
+      default -> throw new UnrecognizedEntryException(functionName);
     };
     for (Cell c: cells) {
       c.addObserver(func);
+      _spreadsheet.addCell(c);
     }
     return func;
     

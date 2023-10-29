@@ -16,14 +16,14 @@ public class Coalesce extends IntervalFunction{
 
     protected void compute(){
         List<Cell> list = getRange().getCells();
-        String res = "";
+        String res = "\'";
         for (Cell c: list) {
             try {
-                res += "\'" + c.value().asString();
+                res += c.value().asString();
                 super.setValue(new LiteralString(res));
                 return;
             } catch(UnsupportedArgument e){
-                res = "";
+                res = "\'";
             }
         }
         super.setValue(new LiteralString(res));

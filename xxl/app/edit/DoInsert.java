@@ -5,14 +5,15 @@ import java.util.List;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import xxl.app.exception.InvalidCellRangeException;
+import xxl.app.exception.UnknownFunctionException;
 import xxl.core.Cell;
 import xxl.core.Range;
 import xxl.core.Spreadsheet;
 import xxl.core.Parser;
 import xxl.core.Content;
-// FIXME import classes
 import xxl.core.exception.InvalidRangeException;
 import xxl.core.exception.UnrecognizedEntryException;
+
 
 /**
  * Class for inserting data.
@@ -38,6 +39,7 @@ class DoInsert extends Command<Spreadsheet> {
     } catch(InvalidRangeException e) {
       throw new InvalidCellRangeException(e.getInvalidRange());
     } catch(UnrecognizedEntryException e){
+      throw new UnknownFunctionException(e.getEntrySpecification());
     }
   }
 }

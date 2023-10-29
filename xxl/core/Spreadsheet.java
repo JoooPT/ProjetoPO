@@ -238,5 +238,9 @@ public class Spreadsheet implements Serializable {
   public void resetCutBuffer() {
     _cutBuffer.clearBuffer();
   }
+
+  public void addCell(Cell cell){
+    _cells.addCell(cell);
+  }
   
 }
