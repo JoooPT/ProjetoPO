@@ -3,9 +3,10 @@ package xxl.core;
 import java.util.List;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class User implements Serializable{
-    private String _name;
+    private final String _name;
     private List<Spreadsheet> _spreadsheets;
 
     /* Constructor */
@@ -37,5 +38,13 @@ public class User implements Serializable{
      */
     void add(Spreadsheet sheet){
         _spreadsheets.add(sheet);
+    }
+
+    public final String getName() {
+        return _name;
+    }
+
+    public List<Spreadsheet> getSpreadsheets() {
+        return Collections.unmodifiableList(_spreadsheets);
     }
 }
