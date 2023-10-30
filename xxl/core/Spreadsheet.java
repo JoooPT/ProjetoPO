@@ -5,8 +5,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import xxl.core.exception.InvalidRangeException;
@@ -22,7 +21,7 @@ public class Spreadsheet implements Serializable {
   private boolean _changed;
   private CellStructure _cells;
   private CutBuffer _cutBuffer;
-  private Set<User> _users;
+  private List<User> _users = new ArrayList<User>();
   private String _filename;
   
   /* Constructor */
@@ -31,7 +30,6 @@ public class Spreadsheet implements Serializable {
     _columns = columns;
     _changed = true;
     _cells = new MapCells();
-    _users = new HashSet<User>();
     _cutBuffer = new CutBuffer();
   }
 
@@ -211,7 +209,11 @@ public class Spreadsheet implements Serializable {
    */
   public void addUser(User user) {
     _users.add(user);
-  } 
+  }
+  
+  public List<User> getUsers() {
+    return _users;
+  }
 
   /**
    * Insert specified content in specified address.

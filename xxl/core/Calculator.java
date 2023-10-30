@@ -13,8 +13,8 @@ import xxl.core.exception.MissingFileAssociationException;
 import xxl.core.exception.UnavailableFileException;
 import xxl.core.exception.UnrecognizedEntryException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class representing a spreadsheet application.
@@ -22,14 +22,13 @@ import java.util.Map;
 public class Calculator {
   
   private Spreadsheet _spreadsheet; /* The current spreadsheet. */
-  private Map<String,User> _users;
+  private List<User> _users = new ArrayList<User>();
   private User _userActive;
 
   /* Constructor */
   public Calculator(){
-    _users = new HashMap<String,User>();
     _userActive = new User("root");
-    _users.put("root",_userActive);
+    _users.add(_userActive);
   }
 
   /**
@@ -65,7 +64,6 @@ public class Calculator {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    */
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
     _spreadsheet.setFileName(filename);
     save();
   }
@@ -94,7 +92,7 @@ public class Calculator {
   public void importFile(String filename) throws ImportFileException, IOException, InvalidRangeException {
     try {
       _spreadsheet = new Parser().parseFile(filename);
-    } catch (IOException | UnrecognizedEntryException /* FIXME maybe other exceptions */ e) {
+    } catch (IOException | UnrecognizedEntryException e) {
       throw new ImportFileException(filename, e);
     }
   }
@@ -116,13 +114,8 @@ public class Calculator {
    * @return true if a new user was sucessfuly created, false otherwise
    */
   public boolean createUser(String name){
-    if(!_users.containsKey(name)){
-      User newUser = new User(name);
-      _userActive = newUser;
-      _users.put(name,newUser);
-    return true;
-    }
-    else {return false;}
+    User user = new User(name);
+    return _users.add(user);
   }
 
   /**
@@ -130,9 +123,16 @@ public class Calculator {
    * @param name of the new active user
    */
   public void setActiveUser(String name){
-    if(_users.containsKey(name)){
-    _userActive = _users.get(name);
+    for (User u: _users) {
+      if (u.getName().equals(name)) {
+        _userActive = u;
+        break;
+      }
     }
+  }
+
+  public List<User> getUsers() {
+    return _users;
   }
   
 }

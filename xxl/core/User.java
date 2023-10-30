@@ -7,12 +7,11 @@ import java.util.Collections;
 
 public class User implements Serializable{
     private final String _name;
-    private List<Spreadsheet> _spreadsheets;
+    private List<Spreadsheet> _spreadsheets = new ArrayList<Spreadsheet>();
 
     /* Constructor */
     public User(String name){
         _name = name;
-        _spreadsheets = new ArrayList<Spreadsheet>();
     }
 
     @Override
@@ -24,11 +23,6 @@ public class User implements Serializable{
             System.err.println(e.getMessage());
         }
         return name.equals(_name);
-    }
-
-    @Override
-    public int hashCode(){
-        return _name.hashCode();
     }
 
     /**
